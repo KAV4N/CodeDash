@@ -28,12 +28,12 @@
 		<div class="ide-editor bg-body-tertiary">
 
 			<div class="code-container">
-				<pre id="code-snippet" class="mb-4 p-3 bg-dark border rounded text-white border-light code-snippet-container" style="white-space: nowrap;">
+				<pre id="code-snippet" class="mb-4 p-3 bg-dark border rounded text-white border-light code-snippet-container">
+					<br>
 					<th:block th:each="entry : ${codeData}">
 						<span class="char-code" th:id="${entry.id}" th:if="${entry.character == 'space'}">&nbsp;</span>
-						<span class="char-code" th:id="${entry.id}" th:if="${entry.character != 'space' and entry.character != 'lineNum'}" th:text="${entry.character}"></span>
+						<span class="char-code" th:id="${entry.id}" th:if="${entry.character != 'space'}" th:text="${entry.character}"></span>
 						<br th:if="${entry.character == '⏎'}"/>
-						<span class="char-code" th:if="${entry.character == 'lineNum'}" th:text="${#strings.substring(entry.id, 2)}" style="display: inline-block; min-width: 25px; text-align: left;margin-right: 10px; padding-right: 10px; border-right: 1px solid #4364DF;color: #4364DF;font-weight: bold; "></span>
 					</th:block>
 				</pre>
 			</div>

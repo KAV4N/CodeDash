@@ -38,10 +38,7 @@ body {
 
 
 
-.cursor{
-    background-color: #375a7f;
-    color: white;
-}
+
 
 
 .ide-container {
@@ -64,10 +61,6 @@ body {
 
 
 
-.code-snippet-container {
-    font-size: 0;
-}
-
 
 
 
@@ -81,9 +74,31 @@ body {
 }
 
 
-#code-snippet {
-    flex: 1;
-    overflow-x: auto;
+.code-snippet-container {
+      counter-reset: line;
+      flex: 1;
+      overflow-x: auto;
+      white-space: nowrap;
+      font-size: 0;
+
+}
+
+.code-snippet-container br + span:before {
+  counter-increment: line;
+  content: counter(line);
+  border-right: 1px solid rgba(52, 89, 230,1);
+  border-top:1px solid rgba(33, 37, 41,1);
+  border-bottom:1px solid rgba(33, 37, 41,1);
+
+  padding: 0 .5em;
+  margin-right: .5em;
+  margin-left: 0em;
+    color: rgba(52, 89, 230,1);
+    background:rgba(33, 37, 41,1);
+}
+
+.code-snippet-container span + span:before {
+  content: "";
 }
 
 .char-code {
@@ -92,10 +107,14 @@ body {
     color: #AAAAAA;
 
 }
+.cursor{
+    background-color: #375a7f;
+    color: white;
+}
 
 .correct {
     color: #a1ff8a;
 }
 .incorrect {
-     background-color: #e74c3c; /* Light red for incorrect characters */
+     background-color: #e74c3c;
  }

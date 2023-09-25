@@ -39,9 +39,4 @@ public class CodeServiceImpl implements CodeService {
 
 		return codeMapper.parseCodeSnippet(codeEntity.getSnippet());
 	}
-
-
-	public int getLines() {
-		return codeMapper.getLineCounter();
-	}
 }

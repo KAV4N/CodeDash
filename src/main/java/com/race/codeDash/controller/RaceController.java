@@ -18,8 +18,8 @@ public class RaceController {
 	@GetMapping("/race")
 	public String racePage(Model model) {
 		LinkedList<CodeDto> codeData = codeService.getRandomCodeDto();
-		int codeDataSize = codeData.size() - codeService.getLines();
-		int maxId = codeDataSize > 1 ? codeDataSize - 1 : 0;
+		int codeDataSize = codeData.size();
+		int maxId = codeDataSize > 0 ? codeDataSize - 1 : 0;
 
 		model.addAttribute("activePage", "race");
 		model.addAttribute("codeData", codeData);

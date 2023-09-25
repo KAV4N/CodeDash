@@ -211,7 +211,7 @@ function gameOver(timeEnd) {
     if (timeEnd){
         countdownValue.textContent = '0';
     }
-    wordToType.textContent = 'Game Over';
+    wordToType.textContent = 'Race Finished!';
     userInput.value = '';
     userInput.disabled = true;
     clearInterval(countdownInterval);
