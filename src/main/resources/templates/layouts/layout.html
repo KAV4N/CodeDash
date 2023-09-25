@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/ide.css" rel="stylesheet">
+    <link href="css/bg-animation-style.css" rel="stylesheet">
+    <link href="css/bg-glow-style.css" rel="stylesheet">
+    <title>CodeDash</title>
+</head>
+<body>
+<div id="blob"></div>
+<div id="blob-navbar"></div>
+<div id="blur"></div>
+<div style="height: 100vh; overflow-y: auto; overflow-x: hidden; scrollbar-width: thin;">
+    <header layout:fragment="header"></header>
+    <div layout:fragment="login"></div>
+    <main layout:fragment="content"></main>
+    <footer layout:fragment="footer"></footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="js/bg-animation.js"></script>
+<script src="js/reveal-animation.js"></script>
+<script src="js/bg-glow.js"></script>
+<div layout:fragment="java-scripts">
+</div>
+
+
+
+</body>
+</html>

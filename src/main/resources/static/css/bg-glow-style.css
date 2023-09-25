@@ -1,0 +1,51 @@
+/* styles.css */
+:root {
+  --background-rgb: 29 30 34;
+
+  --blue-rgb: 33 150 243;
+  --primary-rgb: var(--blue-rgb);
+
+  --blob-color-1: rgb(var(--blue-rgb));
+  --blob-color-2: dodgerblue;
+}
+
+
+#blob {
+  background-color: white;
+  height: 34vmax;
+  aspect-ratio: 1;
+  z-index: -1;
+  position: absolute;
+  overflow-y:hidden;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: linear-gradient(to right, var(--blob-color-1), var(--blob-color-2));
+  animation: rotate 20s infinite;
+  opacity: 0.5;
+}
+
+#blur {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow-y:hidden;
+  z-index: -1;
+  backdrop-filter: blur(12vmax);
+}
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  50% {
+    scale: 1 1.5;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+

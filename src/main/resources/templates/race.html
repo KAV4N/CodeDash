@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layouts/layout.html}">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/countdown.css" rel="stylesheet">
+
+	<title>CodeDash</title>
+</head>
+
+<body>
+<header th:replace="~{/fragments/header :: header}" layout:fragment="header"></header>
+<div th:replace="~{/fragments/login :: login}" layout:fragment="login"></div>
+<main class="container-xxl bd-gutter py-5" id="main-container" layout:fragment="content">
+	<div class="main-container card p-0 shadow-lg rounded bg-dark text-light ide-container">
+		<div class="ide-sidebar d-flex flex-column align-items-start">
+			<div>
+				<h2 class="mb-4">Time Left: <span id="countdown-value" class="text-primary display-4">60</span> seconds</h2>
+				<p class="mb-0"><strong class="text-light">Words Per Minute:</strong> <span id="wpm-value" class="text-primary display-4">0</span></p>
+				<p id="word-to-type" class="lead text-success"></p>
+				<hr class="solid">
+			</div>
+
+			<div class="mt-auto">
+				<a class="btn btn-primary" th:href="@{/race}">Try Again!</a>
+			</div>
+		</div>
+		<div class="ide-editor bg-body-tertiary">
+
+			<div class="code-container">
+				<pre id="code-snippet" class="mb-4 p-3 bg-dark border rounded text-white border-light code-snippet-container" style="white-space: nowrap;">
+					<th:block th:each="entry : ${codeData}">
+						<span class="char-code" th:id="${entry.id}" th:if="${entry.character == 'space'}">&nbsp;</span>
+						<span class="char-code" th:id="${entry.id}" th:if="${entry.character != 'space' and entry.character != 'lineNum'}" th:text="${entry.character}"></span>
+						<br th:if="${entry.character == '⏎'}"/>
+						<span class="char-code" th:if="${entry.character == 'lineNum'}" th:text="${#strings.substring(entry.id, 2)}" style="display: inline-block; min-width: 25px; text-align: left;margin-right: 10px; padding-right: 10px; border-right: 1px solid #4364DF;color: #4364DF;font-weight: bold; "></span>
+					</th:block>
+				</pre>
+			</div>
+			<input type="text" id="user-input" class="form-control bg-dark text-light rounded border-light" placeholder="Type here..." autofocus>
+			<p id="errors-result"><strong class="text-light">Total Errors:</strong> <span id="errors-value" class="display-4 text-danger">0</span></p>
+			<p id="accuracy-result"><strong class="text-light">Accuracy:</strong> <span id="accuracy-value" class="display-4 text-success">0%</span></p>
+			<p id="total-words-typed"><strong class="text-light">Total Characters Typed:</strong> <span id="total-words-typed-value" class="display-4 text-primary">0</span></p>
+		</div>
+	</div>
+	<div id="countdown-container">
+		<div class="countdown-item" id="countdown"></div>
+	</div>
+</main>
+<footer th:replace="~{/fragments/footer :: footer}" layout:fragment="footer"></footer>
+
+<div layout:fragment="java-scripts">
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+            var maxId = /*[[${maxId}]]*/ 'default';
+            console.log(maxId);
+        /*]]>*/
+	</script>
+	<script src="js/race.js"></script>
+</div>
+</body>
+</html>

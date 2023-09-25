@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" th:fragment="login">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header  bg-body-tertiary">
+                <h5 class="modal-title" id="loginModalLabel">Log In</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex flex-column align-items-center py-5">
+                <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+                <div class="g-signin2" data-onsuccess="onSignIn" style="width: 300px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

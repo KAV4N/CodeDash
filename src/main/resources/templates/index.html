@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layouts/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CodeDash</title>
+</head>
+    <body>
+        <header th:replace="~{/fragments/header :: header}" layout:fragment="header"></header>
+        <div th:replace="~{/fragments/login :: login}" layout:fragment="login"></div>
+        <main class="container-xxl bd-gutter py-5" layout:fragment="content">
+            <div class="main-container card py-5 px-5 shadow-lg rounded text-light text-center bg-body-tertiary">
+                <h1 class="display-4">Welcome to CodeDash</h1>
+                <p class="lead">Compete, Learn, and Excel in Coding Challenges</p>
+                <a class="btn btn-primary btn-lg mt-3" th:href="@{/race}">Start CodeDash!</a>
+            </div>
+        </main>
+        <footer th:replace="~{/fragments/footer :: footer}" layout:fragment="footer"></footer>
+    </body>
+</html>
+
