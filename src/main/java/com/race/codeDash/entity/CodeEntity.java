@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "code")
+@Table(name = "tblCode")
 public class CodeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +24,9 @@ public class CodeEntity {
 	@ManyToOne
 	@JoinColumn(name = "difficulty_id")
 	private DifficultyEntity difficulty;
+
+	@ManyToOne
+	@JoinColumn(name = "languageName_id")
+	private ProgrammingLanguageEntity programmingLanguage;
+
 }

@@ -1,13 +1,12 @@
 package com.race.codeDash.service;
 
-import com.race.codeDash.dto.CodeDto;
+import com.race.codeDash.dto.RaceDataDto;
 import com.race.codeDash.entity.CodeEntity;
-import com.race.codeDash.exception.ResourceNotFoundException;
 import com.race.codeDash.mapper.CodeMapper;
 import com.race.codeDash.repository.CodeRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
@@ -24,19 +23,23 @@ public class CodeServiceImpl implements CodeService {
 	}
 
 	@Override
-	public LinkedList<CodeDto> getRandomCodeDto() {
-		long count = codeRepository.count();
+	public RaceDataDto getRandomCodeDto() {
+		List<CodeEntity> data = codeRepository.findAll();
+		int count = data.size();
 
 		if (count == 0) {
 			throw new NoSuchElementException("No code snippets found in the database");
 		}
 
 		Random random = new Random();
-		long randomIndex = random.nextInt((int) count);
-		CodeEntity codeEntity = codeRepository.findById(randomIndex + 1)
-				.orElseThrow(() ->
-						new ResourceNotFoundException("Code ID: " + (randomIndex + 1) + " does not exist!"));
-
-		return codeMapper.parseCodeSnippet(codeEntity.getSnippet());
+		int randomIndex = random.nextInt(count);
+		CodeEntity codeEntity = data.get(randomIndex);
+		return new RaceDataDto(
+				codeEntity.getPlayer().getEmail(),
+				codeEntity.getDifficulty().getName(),
+				codeEntity.getProgrammingLanguage().getLanguageName(),
+				codeEntity.getDifficulty().getTime(),
+				codeMapper.parseCodeSnippet(codeEntity.getSnippet())
+				);
 	}
 }

@@ -2,23 +2,17 @@ package com.race.codeDash.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tblRank")
-public class RankEntity {
+@Table(name = "tblProgrammingLanguage")
+public class ProgrammingLanguageEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String name;
-
-	private Integer exp;
-
-	private Integer picture;
-
+	private String languageName;
 }

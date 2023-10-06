@@ -14,11 +14,12 @@ let docElem = document.getElementById(0);
 let docContent = "";
 let error = false;
 
-
-const wordToType = document.getElementById('word-to-type');
+const raceFinishedMessage = document.getElementById('race-finished');
+const raceFinishedHr = document.getElementById('race-finished-hr');
 const userInput = document.getElementById('user-input');
 const countdownValue = document.getElementById('countdown-value');
 const codeSnippetContainer = document.getElementById("code-snippet");
+const raceProgress = document.getElementById("race-progress");
 
 
 userInput.addEventListener('input', checkInput);
@@ -108,7 +109,6 @@ function startCountdownTimer() {
 
     if (countNumbers[countdownTime] == "start") {
         countdownElementStart.style.opacity = 0;
-        const countdownDuration = 60;
         startCountdown(countdownDuration);
         mainContainer.removeChild(countdownContainerStart);
         userInput.disabled = false;
@@ -203,7 +203,10 @@ function checkInput() {
         totalTypedChars++;
         calculateResults();
     }
-    
+    let progressPercentage = getRaceProgress(maxId,curPoz);
+    console.log(progressPercentage, maxId, curPoz, );
+    raceProgress.style.width = progressPercentage;
+    raceProgress.innerHTML = progressPercentage;
     lastInputLength = inputLength;
 }
 
@@ -211,12 +214,17 @@ function gameOver(timeEnd) {
     if (timeEnd){
         countdownValue.textContent = '0';
     }
-    wordToType.textContent = 'Race Finished!';
+
+    raceFinishedMessage.style.display = 'block';
     userInput.value = '';
     userInput.disabled = true;
     clearInterval(countdownInterval);
     calculateResults();
+
+
 }
+
+
 
 
 function calculateWpm(){
@@ -227,6 +235,10 @@ function calculateWpm(){
 
 function calculateAccuracy(){
     return (totalTypedChars > 0 ? ((totalTypedChars - totalErrors) / totalTypedChars) * 100 : 0).toFixed(2);
+}
+
+function getRaceProgress(maxPoz,cur){
+    return Math.round(100/(maxPoz+1) * (cur+1))+"%";
 }
 
 

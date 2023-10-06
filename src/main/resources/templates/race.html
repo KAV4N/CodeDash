@@ -11,37 +11,66 @@
 <body>
 <header th:replace="~{/fragments/header :: header}" layout:fragment="header"></header>
 <div th:replace="~{/fragments/login :: login}" layout:fragment="login"></div>
-<main class="container-xxl bd-gutter py-5" id="main-container" layout:fragment="content">
-	<div class="main-container card p-0 shadow-lg rounded bg-dark text-light ide-container">
+
+<main class="container-xxl bd-gutter py-3 my-5 rounded custom-bg-dark" id="main-container" layout:fragment="content">
+	<div class="main-container p-0 shadow-lg rounded bg-body-tertiary text-light ide-container">
+		<div class="ide-sidebar d-flex flex-column align-items-start">
+			<div class="custom-bg-dark" style="margin-bottom:5px;width:100%; display: flex; justify-content: center; align-items: center;  border-color: rgba(48,48,51,1); border-style: solid; border-width: 1px; text-align: center;padding:5px;">
+				<span th:text="${programmingLanguage}"></span>
+			</div>
+			<div class="custom-bg-dark" style="width:100%;display: flex; justify-content: center; align-items: center; border-color: rgba(48,48,51,1); border-style: solid; border-width: 1px; text-align: center;padding:5px;">
+				<span th:text="${difficulty}" class="text-danger"></span>
+			</div>
+<!--			<div>-->
+<!--				<span>Creator: <span th:text="${creatorName}"></span></span>-->
+<!--			</div>-->
+		</div>
+		<div class="ide-editor mx-3"  style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+			<div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuemin="0" aria-valuemax="100" style="width: 100%;  background-color:rgba(25,25,25,0.9);">
+				<div id="race-progress" class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 0%;">0%</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="main-container shadow-lg rounded ide-container">
 		<div class="ide-sidebar d-flex flex-column align-items-start">
 			<div>
 				<h2 class="mb-4">Time Left: <span id="countdown-value" class="text-primary display-4">60</span> seconds</h2>
 				<p class="mb-0"><strong class="text-light">Words Per Minute:</strong> <span id="wpm-value" class="text-primary display-4">0</span></p>
-				<p id="word-to-type" class="lead text-success"></p>
-				<hr class="solid">
+				<p class="race-finished text-success" id="race-finished">Race Finished!</p>
+				<hr class="solid" id="race-finished-hr">
 			</div>
 
 			<div class="mt-auto">
 				<a class="btn btn-primary" th:href="@{/race}">Try Again!</a>
 			</div>
 		</div>
-		<div class="ide-editor bg-body-tertiary">
-
-			<div class="code-container">
-				<pre id="code-snippet" class="mb-4 p-3 bg-dark border rounded text-white border-light code-snippet-container">
-					<br>
+		<div class="ide-editor">
+			<div class="shadow-lg bg-body-tertiary rounded p-3 my-1">
+				<div class="code-container mb-4 p-3 custom-bg-dark rounded shadow-lg">
+					<div class="line-numbers-container" id="line-numbers-container">
+						<th:block th:each="line : ${lineNumbers}">
+							<div class="line-number" th:text="${line}"></div>
+						</th:block>
+					</div>
+					<pre id="code-snippet" class="code-snippet-container" style="margin-bottom: 0;">
 					<th:block th:each="entry : ${codeData}">
 						<span class="char-code" th:id="${entry.id}" th:if="${entry.character == 'space'}">&nbsp;</span>
 						<span class="char-code" th:id="${entry.id}" th:if="${entry.character != 'space'}" th:text="${entry.character}"></span>
 						<br th:if="${entry.character == '⏎'}"/>
 					</th:block>
 				</pre>
+				</div>
+				<input type="text" id="user-input" class="shadow-lg form-control custom-bg-dark text-light rounded" style="margin-bottom:1rem; background-color:rgba(25,25,25,0.9); border-width:0px;" placeholder="Type here..." autofocus>
 			</div>
-			<input type="text" id="user-input" class="form-control bg-dark text-light rounded border-light" placeholder="Type here..." autofocus>
-			<p id="errors-result"><strong class="text-light">Total Errors:</strong> <span id="errors-value" class="display-4 text-danger">0</span></p>
-			<p id="accuracy-result"><strong class="text-light">Accuracy:</strong> <span id="accuracy-value" class="display-4 text-success">0%</span></p>
-			<p id="total-words-typed"><strong class="text-light">Total Characters Typed:</strong> <span id="total-words-typed-value" class="display-4 text-primary">0</span></p>
+			<div class="shadow-lg bg-body-tertiary rounded p-3">
+				<p id="errors-result"><strong class="text-light">Total Errors:</strong> <span id="errors-value" class="display-4 text-danger">0</span></p>
+				<p id="accuracy-result"><strong class="text-light">Accuracy:</strong> <span id="accuracy-value" class="display-4 text-success">0%</span></p>
+				<p id="total-words-typed"><strong class="text-light">Total Characters Typed:</strong> <span id="total-words-typed-value" class="display-4 text-primary">0</span></p>
+			</div>
 		</div>
+
+
 	</div>
 	<div id="countdown-container">
 		<div class="countdown-item" id="countdown"></div>
@@ -53,7 +82,7 @@
 	<script th:inline="javascript">
 		/*<![CDATA[*/
             var maxId = /*[[${maxId}]]*/ 'default';
-            console.log(maxId);
+            var countdownDuration = /*[[${playTime}]]*/ 'default';
         /*]]>*/
 	</script>
 	<script src="js/race.js"></script>

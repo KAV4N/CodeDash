@@ -52,7 +52,7 @@
   --bs-warning-rgb: 244, 189, 97;
   --bs-danger-rgb: 218, 41, 46;
   --bs-light-rgb: 248, 249, 250;
-  --bs-dark-rgb: 33, 37, 41;
+  --bs-dark-rgb: 40, 44, 48;
   --bs-primary-text-emphasis: #15245c;
   --bs-secondary-text-emphasis: #666666;
   --bs-success-text-emphasis: #134833;
@@ -134,6 +134,7 @@
 
 [data-bs-theme=dark] {
   color-scheme: dark;
+  --custom-bg-color: rgba(25,25,25,0.9);
   --bs-body-color: #dee2e6;
   --bs-body-color-rgb: 222, 226, 230;
   --bs-body-bg: #212529;
@@ -196,6 +197,10 @@
   :root {
     scroll-behavior: smooth;
   }
+}
+
+.custom-bg-dark{
+    background-color: var(--custom-bg-color);
 }
 
 body {

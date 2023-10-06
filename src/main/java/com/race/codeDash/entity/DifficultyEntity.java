@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "difficulty")
+@Table(name = "tblDifficulty")
 public class DifficultyEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
