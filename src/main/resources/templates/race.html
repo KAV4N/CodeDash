@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/countdown.css" rel="stylesheet">
-
 	<title>CodeDash</title>
 </head>
 
@@ -13,71 +12,173 @@
 <div th:replace="~{/fragments/login :: login}" layout:fragment="login"></div>
 
 <main class="container-xxl bd-gutter py-3 my-5 rounded custom-bg-dark" id="main-container" layout:fragment="content">
-	<div class="main-container p-0 shadow-lg rounded bg-body-tertiary text-light ide-container">
-		<div class="ide-sidebar d-flex flex-column align-items-start">
-			<div class="custom-bg-dark" style="margin-bottom:5px;width:100%; display: flex; justify-content: center; align-items: center;  border-color: rgba(48,48,51,1); border-style: solid; border-width: 1px; text-align: center;padding:5px;">
+
+	<div class="p-3 shadow-lg rounded border bg-body-tertiary text-light align-items-center justify-content-center">
+
+		<div class="d-flex justify-content-center align-items-center">
+			<p class="m-0 race-finished text-success me-3" id="race-finished"><strong>Finished!</strong></p>
+
+			<div class="custom-bg-darkblue rounded ms-auto" style="width: 200px; display: flex; justify-content: center; align-items: center;  border-color: rgba(48,48,51,1);  text-align: center;padding:5px;">
 				<span th:text="${programmingLanguage}"></span>
 			</div>
-			<div class="custom-bg-dark" style="width:100%;display: flex; justify-content: center; align-items: center; border-color: rgba(48,48,51,1); border-style: solid; border-width: 1px; text-align: center;padding:5px;">
+			<div class="custom-bg-darkblue rounded ms-2" style="width: 200px; display: flex; justify-content: center; align-items: center; border-color: rgba(48,48,51,1);  text-align: center; padding:5px;">
 				<span th:text="${difficulty}" class="text-danger"></span>
 			</div>
-<!--			<div>-->
-<!--				<span>Creator: <span th:text="${creatorName}"></span></span>-->
-<!--			</div>-->
 		</div>
-		<div class="ide-editor mx-3"  style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-			<div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuemin="0" aria-valuemax="100" style="width: 100%;  background-color:rgba(25,25,25,0.9);">
-				<div id="race-progress" class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: 0%;">0%</div>
+
+		<div class="mt-3"  style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+			<div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuemin="0" aria-valuemax="100" style="width: 100%;  background-color:rgba(34, 37, 41,1);">
+				<div id="race-progress" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" style="width: 0%;">0%</div>
 			</div>
+
 		</div>
 	</div>
 
-	<div class="main-container shadow-lg rounded ide-container">
+	<div class="d-flex flex-column flex-xl-row shadow-lg rounded border mt-1">
 		<div class="ide-sidebar d-flex flex-column align-items-start">
-			<div>
-				<h2 class="mb-4">Time Left: <span id="countdown-value" class="text-primary display-4">60</span> seconds</h2>
-				<p class="mb-0"><strong class="text-light">Words Per Minute:</strong> <span id="wpm-value" class="text-primary display-4">0</span></p>
-				<p class="race-finished text-success" id="race-finished">Race Finished!</p>
+			<div class="d-flex justify-content-center flex-column w-100 p-2">
+				<h2 id="countdown-value" class="text-primary display-4 mb-0 text-center">60</h2>
+				<hr>
+				<p class="mb-0 text-center"> <span id="wpm-value" class="display-4 text-primary">0</span></p>
+				<p class="text-center m-0"><strong class="text-light">WPM</strong></p>
 				<hr class="solid" id="race-finished-hr">
-			</div>
-
-			<div class="mt-auto">
-				<a class="btn btn-primary" th:href="@{/race}">Try Again!</a>
+				<a class="btn btn-outline-info" th:href="@{/race}">Try Again!</a>
 			</div>
 		</div>
 		<div class="ide-editor">
-			<div class="shadow-lg bg-body-tertiary rounded p-3 my-1">
-				<div class="code-container mb-4 p-3 custom-bg-dark rounded shadow-lg">
+			<div class="shadow-lg bg-body-tertiary rounded p-3">
+				<div id="code-container" class="code-container mb-4 p-3 custom-bg-dark rounded shadow-lg" style="max-height:250px;overflow-y:auto;">
 					<div class="line-numbers-container" id="line-numbers-container">
 						<th:block th:each="line : ${lineNumbers}">
-							<div class="line-number" th:text="${line}"></div>
+							<div class="text-primary line-number border-end border-primary" th:text="${line}"></div>
 						</th:block>
 					</div>
-					<pre id="code-snippet" class="code-snippet-container" style="margin-bottom: 0;">
-					<th:block th:each="entry : ${codeData}">
-						<span class="char-code" th:id="${entry.id}" th:if="${entry.character == 'space'}">&nbsp;</span>
-						<span class="char-code" th:id="${entry.id}" th:if="${entry.character != 'space'}" th:text="${entry.character}"></span>
-						<br th:if="${entry.character == '⏎'}"/>
-					</th:block>
-				</pre>
+					<div id="code-snippet" class="code-snippet-container" style="margin-bottom: 0;">
+						<th:block th:each="entry : ${codeData}">
+							<span class="char-code" th:id="${entry.id}" th:if="${entry.character == 'space'}">&nbsp;</span>
+							<span class="char-code" th:id="${entry.id}" th:if="${entry.character != 'space'}" th:text="${entry.character}"></span>
+							<br th:if="${entry.character == '⏎'}"/>
+						</th:block>
+					</div>
 				</div>
-				<input type="text" id="user-input" class="shadow-lg form-control custom-bg-dark text-light rounded" style="margin-bottom:1rem; background-color:rgba(25,25,25,0.9); border-width:0px;" placeholder="Type here..." autofocus>
+				<input type="text" id="user-input" class="shadow-lg form-control custom-bg-dark text-light rounded" style="margin-bottom:1rem; background-color:rgba(34, 37, 41,1); border-width:0px;" placeholder="Type here..." autofocus>
 			</div>
-			<div class="shadow-lg bg-body-tertiary rounded p-3">
-				<p id="errors-result"><strong class="text-light">Total Errors:</strong> <span id="errors-value" class="display-4 text-danger">0</span></p>
-				<p id="accuracy-result"><strong class="text-light">Accuracy:</strong> <span id="accuracy-value" class="display-4 text-success">0%</span></p>
-				<p id="total-words-typed"><strong class="text-light">Total Characters Typed:</strong> <span id="total-words-typed-value" class="display-4 text-primary">0</span></p>
+			<div class="d-flex d-flex flex-column flex-md-row flex-xl-row">
+				<div class="shadow-lg bg-body-tertiary rounded mt-1 p-3"  style="flex-grow: 2;">
+					<div style="height: 250px;" class="d-flex flex-column  justify-content-between">
+						<div class="custom-bg-darkblue rounded w-100 text-center">
+							<p id="total-words-typed" class="mx-3 my-1"><strong class="text-light">Typed:</strong> </p>
+							<hr class="m-0 border-black">
+							<span id="total-words-typed-value" class="display-6 text-primary">0</span>
+						</div>
+						<div class="custom-bg-darkblue rounded w-100 text-center">
+							<p id="errors-result" class="mx-3 my-1"><strong class="text-light">Errors:</strong> </p>
+							<hr class="m-0 border-black">
+							<span id="errors-value" class="display-6 text-danger">0</span>
+						</div>
+						<div class="custom-bg-darkblue rounded w-100 text-center">
+							<p id="accuracy-result" class="mx-3 my-1"><strong class="text-light">Accuracy:</strong> </p>
+							<hr class="m-0 border-black">
+							<span id="accuracy-value" class="display-6 text-success">0%</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="shadow-lg bg-body-tertiary rounded p-3 justify-content-center align-items-center mt-1 ms-md-1" style="flex-grow: 10;">
+					<div class="scrollable-table rounded" style="height: 250px; overflow: auto;background-color:#212529;">
+						<table id="playerTable" class="table table-hover display font-weight-bold w-100 text-center" style="color: #F8F9FA;">
+							<thead>
+							<tr>
+								<th scope="col">Rank</th>
+								<th scope="col">Player</th>
+								<th scope="col">WPM</th>
+								<th scope="col">Time Left</th>
+								<th scope="col">Accuracy</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>Player 1</td>
+								<td>75</td>
+								<td>3:42</td>
+								<td>98%</td>
+							</tr>
+							<tr>
+								<th scope="row">2</th>
+								<td>Player 2</td>
+								<td>82</td>
+								<td>4:15</td>
+								<td>92%</td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td>Player 3</td>
+								<td>63</td>
+								<td>2:57</td>
+								<td>87%</td>
+							</tr>
+							<tr>
+								<th scope="row">4</th>
+								<td>Player 4</td>
+								<td>91</td>
+								<td>5:10</td>
+								<td>95%</td>
+							</tr>
+							<tr>
+								<th scope="row">5</th>
+								<td>Player 5</td>
+								<td>68</td>
+								<td>3:18</td>
+								<td>89%</td>
+							</tr>
+							<tr>
+								<th scope="row">6</th>
+								<td>Player 6</td>
+								<td>77</td>
+								<td>4:00</td>
+								<td>96%</td>
+							</tr>
+							<tr>
+								<th scope="row">7</th>
+								<td>Player 7</td>
+								<td>54</td>
+								<td>2:32</td>
+								<td>84%</td>
+							</tr>
+							<tr>
+								<th scope="row">8</th>
+								<td>Player 8</td>
+								<td>88</td>
+								<td>4:45</td>
+								<td>93%</td>
+							</tr>
+							<tr>
+								<th scope="row">9</th>
+								<td>Player 9</td>
+								<td>72</td>
+								<td>3:56</td>
+								<td>91%</td>
+							</tr>
+							<tr>
+								<th scope="row">10</th>
+								<td>Player 10</td>
+								<td>95</td>
+								<td>5:30</td>
+								<td>99%</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
-
-
 	</div>
 	<div id="countdown-container">
 		<div class="countdown-item" id="countdown"></div>
 	</div>
 </main>
 <footer th:replace="~{/fragments/footer :: footer}" layout:fragment="footer"></footer>
-
 <div layout:fragment="java-scripts">
 	<script th:inline="javascript">
 		/*<![CDATA[*/

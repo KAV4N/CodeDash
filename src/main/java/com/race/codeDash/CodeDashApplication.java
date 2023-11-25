@@ -9,5 +9,4 @@ public class CodeDashApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CodeDashApplication.class, args);
 	}
-
 }

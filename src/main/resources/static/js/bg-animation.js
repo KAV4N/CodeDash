@@ -1,4 +1,3 @@
-const body = document.body;
 
 const codeSnippets = [
   `function add(x, y) {
@@ -35,7 +34,18 @@ const doubledNumbers = numbers.map((num) => num * 2);
 
 
 const maxCode = 12;
-let curCodes = 0;
+let curCodes = [];
+
+function removeA(arr) {
+    var what, a = arguments, L = a.length, ax;
+    while (L > 1 && arr.length) {
+        what = a[--L];
+        while ((ax= arr.indexOf(what)) !== -1) {
+            arr.splice(ax, 1);
+        }
+    }
+    return arr;
+}
 
 
 function getRandomCodeSnippet() {
@@ -44,39 +54,38 @@ function getRandomCodeSnippet() {
 
 
 function createRandomCircle() {
-  if (curCodes < maxCode) {
-    const circle = document.createElement("div");
-    circle.className = "circle";
-    circle.style.left = `${Math.random() * 100}vw`;
-    circle.style.top = `${Math.random() * 100}vh`;
+    if (curCodes.length < maxCode) {
+        const circle = document.createElement('div');
+        circle.className = 'circle';
 
-    const codeSnippetContainer = document.createElement("pre");
-    codeSnippetContainer.className = "code-snippet-bg";
-    const randomCodeSnippet = getRandomCodeSnippet();
-    codeSnippetContainer.textContent = randomCodeSnippet;
-    circle.appendChild(codeSnippetContainer);
-    body.appendChild(circle);
+        circle.style.left = Math.random() * 100 + "vw";
+        const codeSnippetContainer = document.createElement("pre");
+        codeSnippetContainer.className = "code-snippet-bg";
+        const randomCodeSnippet = getRandomCodeSnippet();
+        codeSnippetContainer.textContent = randomCodeSnippet;
+        circle.appendChild(codeSnippetContainer);
 
-    const animateCircle = () => {
-      const circleBottom = circle.getBoundingClientRect().bottom;
-      if (circleBottom >= window.innerHeight + 100) {
-        if (circle.parentNode === body) {
-          body.removeChild(circle);
-          curCodes--;
-        }
-      }
-    };
+        document.getElementById("wrapper-outside-text").appendChild(circle);
+        curCodes.push(circle);
+        circle.addEventListener("animationend", () => {
+            circle.remove()
+            curCodes = removeA(curCodes, circle);
 
-    circle.addEventListener("animationend", () => {
-      if (circle.parentNode === body) {
-        body.removeChild(circle);
-        curCodes--;
-      }
-    });
 
-    requestAnimationFrame(animateCircle);
-    curCodes++;
-  }
+        });
+        const animateCircle = () => {
+            const circleBottom = circle.getBoundingClientRect().bottom;
+            if (circleBottom >= window.innerHeight + 100) {
+                circle.remove()
+                curCodes = removeA(curCodes, circle);
+            }
+        };
+
+        //requestAnimationFrame(animateCircle);
+//        console.log(curCodes);
+    }
 }
 
 setInterval(createRandomCircle, 500);
+
+

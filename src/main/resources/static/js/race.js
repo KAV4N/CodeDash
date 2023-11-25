@@ -19,7 +19,12 @@ const raceFinishedHr = document.getElementById('race-finished-hr');
 const userInput = document.getElementById('user-input');
 const countdownValue = document.getElementById('countdown-value');
 const codeSnippetContainer = document.getElementById("code-snippet");
+const codeContainer = document.getElementById("code-container");
 const raceProgress = document.getElementById("race-progress");
+
+
+
+
 
 
 userInput.addEventListener('input', checkInput);
@@ -45,6 +50,10 @@ userInput.addEventListener('paste', (event) => {
 
 userInput.addEventListener('contextmenu', (event) => {
     event.preventDefault();
+});
+
+userInput.addEventListener('focus', () => {
+    userInput.scrollIntoView(false);
 });
 
 userInput.addEventListener('keydown', (event) => {
@@ -204,11 +213,52 @@ function checkInput() {
         calculateResults();
     }
     let progressPercentage = getRaceProgress(maxId,curPoz);
-    console.log(progressPercentage, maxId, curPoz, );
+    console.log(progressPercentage, maxId, curPoz);
     raceProgress.style.width = progressPercentage;
     raceProgress.innerHTML = progressPercentage;
     lastInputLength = inputLength;
+    if (curPoz < maxId){
+        //docElem = docElem.nextSibling;
+        docElem = document.getElementById(curPoz + 1);
+    }
+    scrollHorizontallyToElement(docElem);
+    scrollVerticallyToElement(docElem);
+
 }
+
+function scrollHorizontallyToElement(el) {
+    const elRight = el.offsetLeft + el.offsetWidth;
+    const elLeft = el.offsetLeft;
+
+    const elParentRight = el.parentNode.parentNode.offsetLeft + el.parentNode.parentNode.offsetWidth;
+    const elParentLeft = el.parentNode.parentNode.offsetLeft;
+
+    if (elRight > elParentRight + el.parentNode.parentNode.scrollLeft) {
+      el.parentNode.parentNode.scrollLeft = elRight - elParentRight;
+    }
+    else if (elLeft < elParentLeft + el.parentNode.parentNode.scrollLeft) {
+      el.parentNode.parentNode.scrollLeft = elLeft - elParentLeft;
+    }
+}
+
+function scrollVerticallyToElement(el) {
+    const elBottom = el.offsetTop + el.offsetHeight;
+    const elTop = el.offsetTop;
+
+    const elParentBottom = el.parentNode.parentNode.offsetTop + el.parentNode.parentNode.offsetHeight;
+    const elParentTop = el.parentNode.parentNode.offsetTop;
+
+    if (elBottom > elParentBottom + el.parentNode.parentNode.scrollTop) {
+        el.parentNode.parentNode.scrollTop = elBottom - elParentBottom;
+    }
+    else if (elTop < elParentTop + el.parentNode.parentNode.scrollTop) {
+        el.parentNode.parentNode.scrollTop = elTop - elParentTop;
+    }
+}
+
+
+
+
 
 function gameOver(timeEnd) {
     if (timeEnd){
@@ -234,7 +284,7 @@ function calculateWpm(){
 }
 
 function calculateAccuracy(){
-    return (totalTypedChars > 0 ? ((totalTypedChars - totalErrors) / totalTypedChars) * 100 : 0).toFixed(2);
+    return Math.round((totalTypedChars > 0 ? ((totalTypedChars - totalErrors) / totalTypedChars) * 100 : 0).toFixed(2));
 }
 
 function getRaceProgress(maxPoz,cur){

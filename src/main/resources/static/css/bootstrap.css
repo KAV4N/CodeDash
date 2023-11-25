@@ -28,7 +28,7 @@
   --bs-white: #fff;
   --bs-gray: #6c757d;
   --bs-gray-dark: #343a40;
-  --bs-gray-100: #f8f9fa;
+  --bs-gray-100: #F8F9FA;
   --bs-gray-200: #e9ecef;
   --bs-gray-300: #dee2e6;
   --bs-gray-400: #ced4da;
@@ -43,11 +43,11 @@
   --bs-info: #287bb5;
   --bs-warning: #f4bd61;
   --bs-danger: #da292e;
-  --bs-light: #f8f9fa;
+  --bs-light: #F8F9FA;
   --bs-dark: #212529;
-  --bs-primary-rgb: 52, 89, 230;
+  --bs-primary-rgb: 52, 150, 255;
   --bs-secondary-rgb: 255, 255, 255;
-  --bs-success-rgb: 47, 179, 128;
+  --bs-success-rgb: 47, 220, 128;
   --bs-info-rgb: 40, 123, 181;
   --bs-warning-rgb: 244, 189, 97;
   --bs-danger-rgb: 218, 41, 46;
@@ -77,7 +77,7 @@
   --bs-danger-border-subtle: #f0a9ab;
   --bs-light-border-subtle: #e9ecef;
   --bs-dark-border-subtle: #adb5bd;
-  --bs-white-rgb: 255, 255, 255;
+  --bs-white-rgb: 223, 226, 224;
   --bs-black-rgb: 0, 0, 0;
   --bs-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -98,7 +98,7 @@
   --bs-secondary-bg-rgb: 233, 236, 239;
   --bs-tertiary-color: rgba(73, 80, 87, 0.5);
   --bs-tertiary-color-rgb: 73, 80, 87;
-  --bs-tertiary-bg: #f8f9fa;
+  --bs-tertiary-bg: #F8F9FA;
   --bs-tertiary-bg-rgb: 248, 249, 250;
   --bs-heading-color: #212529;
   --bs-link-color: #3459e6;
@@ -135,6 +135,7 @@
 [data-bs-theme=dark] {
   color-scheme: dark;
   --custom-bg-color: rgba(25,25,25,0.9);
+  --custom-bg-dark-blue-color: #222529;
   --bs-body-color: #dee2e6;
   --bs-body-color-rgb: 222, 226, 230;
   --bs-body-bg: #212529;
@@ -155,7 +156,7 @@
   --bs-info-text-emphasis: #7eb0d3;
   --bs-warning-text-emphasis: #f8d7a0;
   --bs-danger-text-emphasis: #e97f82;
-  --bs-light-text-emphasis: #f8f9fa;
+  --bs-light-text-emphasis: #F8F9FA;
   --bs-dark-text-emphasis: #dee2e6;
   --bs-primary-bg-subtle: #0a122e;
   --bs-secondary-bg-subtle: #333333;
@@ -201,6 +202,14 @@
 
 .custom-bg-dark{
     background-color: var(--custom-bg-color);
+}
+
+.custom-bg-darkblue{
+    background-color: var(--custom-bg-dark-blue-color);
+}
+
+body, html{
+    overflow: hidden;
 }
 
 body {
@@ -382,7 +391,7 @@ pre {
   display: block;
   margin-top: 0;
   margin-bottom: 1rem;
-  overflow: auto;
+  /*overflow: auto;*/
   font-size: 0.875em;
 }
 pre code {
@@ -2032,7 +2041,7 @@ progress {
 
 .table-light {
   --bs-table-color: #000;
-  --bs-table-bg: #f8f9fa;
+  --bs-table-bg: #F8F9FA;
   --bs-table-border-color: #dfe0e1;
   --bs-table-striped-bg: #ecedee;
   --bs-table-striped-color: #000;
@@ -2757,7 +2766,7 @@ textarea.form-control-lg {
   color: var(--bs-body-color);
   text-align: center;
   white-space: nowrap;
-  background-color: #f8f9fa;
+  background-color: #F8F9FA;
   border: var(--bs-border-width) solid var(--bs-border-color);
   border-radius: var(--bs-border-radius);
 }
@@ -3124,19 +3133,19 @@ textarea.form-control-lg {
 
 .btn-info {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #287bb5;
-  --bs-btn-border-color: #287bb5;
+  --bs-btn-bg: #3496FF;
+  --bs-btn-border-color: #3496FF;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #22699a;
-  --bs-btn-hover-border-color: #206291;
+  --bs-btn-hover-bg: #3496FF;
+  --bs-btn-hover-border-color: #3496FF;
   --bs-btn-focus-shadow-rgb: 72, 143, 192;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #206291;
+  --bs-btn-active-bg: #3496FF;
   --bs-btn-active-border-color: #1e5c88;
   --bs-btn-active-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #287bb5;
-  --bs-btn-disabled-border-color: #287bb5;
+  --bs-btn-disabled-bg: #3496FF;
+  --bs-btn-disabled-border-color: #3496FF;
 }
 
 .btn-warning {
@@ -3175,8 +3184,8 @@ textarea.form-control-lg {
 
 .btn-light {
   --bs-btn-color: #000;
-  --bs-btn-bg: #f8f9fa;
-  --bs-btn-border-color: #f8f9fa;
+  --bs-btn-bg: #F8F9FA;
+  --bs-btn-border-color: #F8F9FA;
   --bs-btn-hover-color: #000;
   --bs-btn-hover-bg: #d3d4d5;
   --bs-btn-hover-border-color: #c6c7c8;
@@ -3186,8 +3195,8 @@ textarea.form-control-lg {
   --bs-btn-active-border-color: #babbbc;
   --bs-btn-active-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   --bs-btn-disabled-color: #000;
-  --bs-btn-disabled-bg: #f8f9fa;
-  --bs-btn-disabled-border-color: #f8f9fa;
+  --bs-btn-disabled-bg: #F8F9FA;
+  --bs-btn-disabled-border-color: #F8F9FA;
 }
 
 .btn-dark {
@@ -3259,19 +3268,18 @@ textarea.form-control-lg {
 }
 
 .btn-outline-info {
-  --bs-btn-color: #287bb5;
-  --bs-btn-border-color: #287bb5;
+  --bs-btn-border-color: #3496FF;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #287bb5;
-  --bs-btn-hover-border-color: #287bb5;
+  --bs-btn-hover-bg: #3496FF;
+  --bs-btn-hover-border-color: #3496FF;
   --bs-btn-focus-shadow-rgb: 40, 123, 181;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #287bb5;
-  --bs-btn-active-border-color: #287bb5;
+  --bs-btn-active-bg: #3496FF;
+  --bs-btn-active-border-color: #3496FF;
   --bs-btn-active-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --bs-btn-disabled-color: #287bb5;
+  --bs-btn-disabled-color: #3496FF;
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #287bb5;
+  --bs-btn-disabled-border-color: #3496FF;
   --bs-gradient: none;
 }
 
@@ -3310,19 +3318,19 @@ textarea.form-control-lg {
 }
 
 .btn-outline-light {
-  --bs-btn-color: #f8f9fa;
-  --bs-btn-border-color: #f8f9fa;
+  --bs-btn-color: #F8F9FA;
+  --bs-btn-border-color: #F8F9FA;
   --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #f8f9fa;
-  --bs-btn-hover-border-color: #f8f9fa;
+  --bs-btn-hover-bg: #F8F9FA;
+  --bs-btn-hover-border-color: #F8F9FA;
   --bs-btn-focus-shadow-rgb: 248, 249, 250;
   --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #f8f9fa;
-  --bs-btn-active-border-color: #f8f9fa;
+  --bs-btn-active-bg: #F8F9FA;
+  --bs-btn-active-border-color: #F8F9FA;
   --bs-btn-active-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --bs-btn-disabled-color: #f8f9fa;
+  --bs-btn-disabled-color: #F8F9FA;
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #f8f9fa;
+  --bs-btn-disabled-border-color: #F8F9FA;
   --bs-gradient: none;
 }
 
@@ -4779,7 +4787,7 @@ textarea.form-control-lg {
   --bs-pagination-border-color: var(--bs-border-color);
   --bs-pagination-border-radius: var(--bs-border-radius);
   --bs-pagination-hover-color: #495057;
-  --bs-pagination-hover-bg: #f8f9fa;
+  --bs-pagination-hover-bg: #F8F9FA;
   --bs-pagination-hover-border-color: var(--bs-border-color);
   --bs-pagination-focus-color: #495057;
   --bs-pagination-focus-bg: var(--bs-secondary-bg);
@@ -12143,7 +12151,7 @@ textarea.form-control-lg {
 .btn-light,
 .btn-outline-secondary,
 .btn-outline-light {
-  color: #f8f9fa;
+  color: #F8F9FA;
 }
 .btn-secondary:disabled, .btn-secondary.disabled,
 .btn-light:disabled,
@@ -12275,9 +12283,192 @@ thead th {
 }
 
 .modal-footer {
-  background-color: #f8f9fa;
+  background-color: #F8F9FA;
 }
 
 .modal-content {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+
+/* added section*/
+
+.scrollbar {
+  margin-left: 30px;
+  float: left;
+  height: 300px;
+  width: 65px;
+  background: #fff;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+}
+.force-overflow {
+  min-height: 450px;
+}
+
+.scrollbar-primary::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+.scrollbar-primary::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #4285F4;
+}
+
+.scrollbar-primary {
+  scrollbar-color: #4285F4 #F5F5F5;
+}
+
+.scrollbar-danger::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+.scrollbar-danger::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+.scrollbar-danger::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #ff3547;
+}
+
+.scrollbar-danger {
+  scrollbar-color: #ff3547 #F5F5F5;
+}
+
+.scrollbar-warning::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+.scrollbar-warning::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+.scrollbar-warning::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #FF8800;
+}
+
+.scrollbar-warning {
+  scrollbar-color: #FF8800 #F5F5F5;
+}
+
+.scrollbar-success::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+.scrollbar-success::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+.scrollbar-success::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #00C851;
+}
+
+.scrollbar-success {
+  scrollbar-color: #00C851 #F5F5F5;
+}
+
+.scrollbar-info::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+.scrollbar-info::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+.scrollbar-info::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #33b5e5;
+}
+
+.scrollbar-info {
+  scrollbar-color: #33b5e5 #F5F5F5;
+}
+
+.scrollbar-default::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+.scrollbar-default::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+.scrollbar-default::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #2BBBAD;
+}
+
+.scrollbar-default {
+  scrollbar-color: #2BBBAD #F5F5F5;
+}
+
+.scrollbar-secondary::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+.scrollbar-secondary::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+.scrollbar-secondary::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #aa66cc;
+}
+
+.scrollbar-secondary {
+  scrollbar-color: #aa66cc #F5F5F5;
+}
+
+
+/* ===== Scrollbar CSS ===== */
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+scrollbar-width: thin;
+scrollbar-height: thin;
+scrollbar-color: #525252 #1b1c1c;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+width: 7px;
+height: 7px;
+}
+
+*::-webkit-scrollbar-track {
+background: #1b1c1c;
+}
+
+*::-webkit-scrollbar-thumb {
+background-color: #525252;
+border-radius: 7px;
+border: 0px none #858585;
 }

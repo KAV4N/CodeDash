@@ -37,10 +37,7 @@ body {
 
 
 
-.ide-container {
-    display: flex;
-    flex-direction: row;
-}
+
 
 .ide-editor {
     flex: 1;
@@ -48,7 +45,6 @@ body {
 }
 
 .ide-sidebar {
-    width: 300px;
     padding: 1rem;
     color: #FFFFFF;
 }
@@ -64,9 +60,10 @@ body {
 
 .code-snippet-container {
       /*counter-reset: line;*/
-      overflow-x: auto;
-      white-space: nowrap;
+      font-family: var(--bs-font-monospace);
       font-size: 0;
+      white-space: nowrap;
+      width:100%;
 }
 /*
 
@@ -97,8 +94,6 @@ body {
 
 .line-number{
    font-size: 0.85rem;
-   color: rgba(52, 89, 230,1);
-   border-right: 1px solid rgba(52, 89, 230,1);
     margin-right: 1em;
     padding-right: 1em;
     text-align: center;
@@ -153,5 +148,10 @@ progress {
   background-color: #333;
   border-radius: 5px;
 }
-
+.my-custom-scrollbar {
+  position: relative;
+  width: 800px;
+  height: 400px;
+  overflow: auto;
+}
 

@@ -1,4 +1,4 @@
-
+/*
 
     .circle {
       position: absolute;
@@ -9,6 +9,7 @@
       font-size: var(--font-size);
       font-weight: 500;
       display: flex;
+      overflow: hidden;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
@@ -26,6 +27,48 @@
       }
       100% {
         transform: translate(0vw, 100vh);
+      }
+    }
+
+    @keyframes fadeCircle {
+      0%, 100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+
+
+    */
+
+    .circle {
+          position: fixed;
+          width: var(--font-size);
+          height: var(--font-size);
+          background-color: transparent;
+          color: white;
+          font-size: var(--font-size);
+          font-weight: 500;
+          display: flex;
+          overflow: hidden;
+          align-items: center;
+          justify-content: center;
+          pointer-events: none;
+          user-select: none;
+          opacity: 1;
+          top: -1vh;
+          animation: fall 10s linear, fadeCircle 10s linear;;
+
+        }
+
+    @keyframes fall {
+      from {
+         transform: translateY(0vh) translateX(0vw);
+      }
+      to {
+         transform: translateY(100vh) translateX(0vw);
       }
     }
 
