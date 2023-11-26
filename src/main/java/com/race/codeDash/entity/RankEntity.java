@@ -19,6 +19,6 @@ public class RankEntity {
 
 	private Integer exp;
 
-	private Integer picture;
+	private byte[] picture;
 
 }

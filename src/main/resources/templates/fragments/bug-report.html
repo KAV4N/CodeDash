@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div class="modal fade" id="bugReportModal" tabindex="4" aria-labelledby="bugReportModalLabel" aria-hidden="true" th:fragment="bug-report">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-body-tertiary">
+                <h5 class="modal-title" id="bugReportModalLabel">Bug Report</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/reported-bug">
+                    <div class="mb-3">
+                        <label for="bugTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="bugTitle" placeholder="Enter bug title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bugDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="bugDescription" rows="3" placeholder="Enter bug description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                    </div>
+                    <button id="btn-bug-report" type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

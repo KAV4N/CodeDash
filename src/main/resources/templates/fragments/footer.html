@@ -4,8 +4,27 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<footer th:fragment="footer">
-
+<footer th:fragment="footer" class="py-3 custom-bg-dark">
+    <div class="container-xxl">
+        <div class="row">
+            <div class="col-md-4">
+                <a class="btn btn-outline-danger my-2 my-sm-0" href="#" data-bs-toggle="modal" data-bs-target="#bugReportModal">Bug Report</a>
+            </div>
+            <div class="col-md-4">
+                <ul class="nav justify-content-center d-flex">
+                    <li><a class="text-primary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+                    <li class="mx-3"><a class="text-primary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+                    <li><a class="text-primary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center text-body-secondary mt-3">© 2023 CodeDash</p>
+    </div>
+    <hr>
+    <div class="container-xxl d-flex align-items-center">
+        <p class="text-center text-body-secondary mb-0 me-5"><a class="text-primary" href="mailto:info@codedash.com">info@codedash.com</a></p>
+        <p class="text-center text-body-secondary mb-0"><a class="text-primary" href="tel:+1234567890">+1 (234) 567-890</a></p>
+    </div>
 </footer>
 </body>
 </html>

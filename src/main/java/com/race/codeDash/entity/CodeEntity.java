@@ -15,6 +15,7 @@ public class CodeEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(length = 1000)
 	private String snippet;
 
 	@ManyToOne

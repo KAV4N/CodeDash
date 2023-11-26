@@ -12472,3 +12472,22 @@ background-color: #525252;
 border-radius: 7px;
 border: 0px none #858585;
 }
+
+.navbar-default{
+  transition:500ms ease;
+  background-color: rgba(33, 37, 41, 0.5);
+}
+
+/*Remove this feature in a future with fixed header, it looks very bad now*/
+.navbar-default.scrolled {
+    background-color: rgba(25,25,25,1);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #5297fc;
+}
+
+
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }

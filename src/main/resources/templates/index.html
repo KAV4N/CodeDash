@@ -9,6 +9,7 @@
     <body>
         <header th:replace="~{/fragments/header :: header}" layout:fragment="header"></header>
         <div th:replace="~{/fragments/login :: login}" layout:fragment="login"></div>
+        <div th:replace="~{/fragments/bug-report :: bug-report}" layout:fragment="bug-report"></div>
         <main class="container-xxl bd-gutter py-5" layout:fragment="content">
             <div class="main-container card py-5 px-5 shadow-lg rounded text-light text-center bg-body-tertiary">
                 <h1 class="display-4">Welcome to CodeDash</h1>
