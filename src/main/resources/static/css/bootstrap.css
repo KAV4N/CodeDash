@@ -12476,10 +12476,36 @@ border: 0px none #858585;
 .navbar-default{
   transition:500ms ease;
   background-color: rgba(33, 37, 41, 0.5);
+  backdrop-filter: blur(12px);
 }
+
+.border-gradient {
+  border: 10px solid;
+  border-image-slice: 100;
+  border-width: 1px;
+}
+
+.only-bottom {
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-image-source: radial-gradient(70.71% 70.71% at 50% 50%,hsla(0,0%,100%,.12) 0,hsla(0,0%,100%,0) 100%);
+}
+
+.only-top {
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-image-source: radial-gradient(70.71% 70.71% at 50% 50%,hsla(0,0%,100%,.12) 0,hsla(0,0%,100%,0) 100%);
+}
+
+
+
+
 
 /*Remove this feature in a future with fixed header, it looks very bad now*/
 .navbar-default.scrolled {
+    border-image-source: none;
     background-color: rgba(25,25,25,1);
     border-bottom-style: solid;
     border-bottom-width: 1px;
@@ -12487,7 +12513,21 @@ border: 0px none #858585;
 }
 
 
-  .bi {
-    vertical-align: -.125em;
-    fill: currentColor;
-  }
+.bi {
+vertical-align: -.125em;
+fill: currentColor;
+}
+
+.bg-blur{
+    background-color: rgba(33, 37, 41, 0.5);
+    backdrop-filter: blur(12px);
+}
+
+.height-500{
+    height:500px;
+}
+
+.gray-gradient{
+background: rgb(43,48,53);
+background: linear-gradient(180deg, rgba(43,48,53,1) 0%, rgba(43,48,53,1) 51%, rgba(25,25,25,1) 100%);
+}

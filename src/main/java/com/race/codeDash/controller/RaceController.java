@@ -43,6 +43,11 @@ public class RaceController {
 		return "race";
 	}
 
+	@GetMapping("/code-categories")
+	public String codeCategoriesPage(Model model) {
+		return "code-categories";
+	}
+
 }
 
 

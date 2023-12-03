@@ -16,11 +16,11 @@
                 <form method="post" action="/reported-bug">
                     <div class="mb-3">
                         <label for="bugTitle" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="bugTitle" placeholder="Enter bug title">
+                        <input type="text" class="form-control" id="bugTitle" placeholder="Enter bug title" required>
                     </div>
                     <div class="mb-3">
                         <label for="bugDescription" class="form-label">Description</label>
-                        <textarea class="form-control" id="bugDescription" rows="3" placeholder="Enter bug description"></textarea>
+                        <textarea class="form-control" id="bugDescription" rows="3" placeholder="Enter bug description" required></textarea>
                     </div>
                     <div class="mb-3">
                     </div>
@@ -28,6 +28,12 @@
                 </form>
             </div>
         </div>
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Thank you!</strong> for reporting a bug.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
 </div>
 

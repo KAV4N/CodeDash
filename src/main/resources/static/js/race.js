@@ -89,7 +89,7 @@ function isArrowKey(key) {
 const countdownElementStart = document.getElementById("countdown");
 const countdownContainerStart = document.getElementById("countdown-container");
 const mainContainer = document.getElementById("main-container");
-const countNumbers = ["3","2","1","Go!","-1","start"];
+const countNumbers = ["3","2","1","Go!"];
 let countdownTime = 0;
 
 
@@ -116,7 +116,7 @@ function startCountdownTimer() {
     countdownElementStart.classList.add("countdown-item");
     countdownTime++
 
-    if (countNumbers[countdownTime] == "start") {
+    if (countdownTime > countNumbers.length) {
         countdownElementStart.style.opacity = 0;
         startCountdown(countdownDuration);
         mainContainer.removeChild(countdownContainerStart);
@@ -124,8 +124,11 @@ function startCountdownTimer() {
         userInput.focus();
         return;
     }
+    else{
+        setTimeout(startCountdownTimer, 1000);
+    }
 
-    setTimeout(startCountdownTimer, 1000);
+
 }
 
 function startGame() {
@@ -301,5 +304,4 @@ function calculateResults() {
 
 
 startGame();
-
 
