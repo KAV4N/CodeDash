@@ -26,24 +26,51 @@
     </svg>
 
     <div class="container-xxl">
-        <div class="row align-items-center">
-            <div class="col-md-4 my-3">
+        <div class="d-flex align-items-center flex-column flex-md-row">
+            <!-- Bug Report Column -->
+            <div class="col-12 col-md-4 my-3">
                 <div class="col col-md-6">
                     <a class="btn btn-outline-danger my-2 col w-100" href="#" data-bs-toggle="modal" data-bs-target="#bugReportModal">Bug Report</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <ul class="nav justify-content-center d-flex">
-                    <li><a class="text-primary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-                    <li class="mx-3"><a class="text-primary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-                    <li><a class="text-primary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-                    <li><a class="text-primary ms-3" href="https://www.youtube.com/watch?v=8ybW48rKBME" target="_blank"><svg class="bi" width="24" height="24"><use xlink:href="#youtube"></use></svg></a></li>
-                </ul>
+
+            <div class="ms-auto d-flex gap-5 flex-column flex-md-row justify-content-end">
+                <div>
+                    <h5 class="text-white">Community</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="text-primary" href="#">Discussions</a></li>
+                        <li class="nav-item"><a class="text-primary" href="#">Corporate Sponsors</a></li>
+                        <li class="nav-item"><a class="text-primary" href="#">Open Collective</a></li>
+                        <li class="nav-item"><a class="text-primary" href="#">Stack Overflow</a></li>
+                    </ul>
+                </div>
+
+                <!-- Issues Column -->
+                <div>
+                    <h5 class="text-white">Issues</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="text-primary" href="#">Feature Requests</a></li>
+                    </ul>
+                </div>
             </div>
+
         </div>
+        <div class="col-md-4 w-100  mt-5">
+            <ul class="nav justify-content-center d-flex">
+                <li><a class="text-primary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+                <li class="mx-3"><a class="text-primary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+                <li><a class="text-primary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+                <li><a class="text-primary ms-3" href="https://www.youtube.com/watch?v=8ybW48rKBME" target="_blank"><svg class="bi" width="24" height="24"><use xlink:href="#youtube"></use></svg></a></li>
+            </ul>
+        </div>
+        <!-- Footer Content -->
         <p class="text-center text-body-secondary mt-3">© 2023 CodeDash</p>
     </div>
+
+    <!-- Horizontal Rule -->
     <hr>
+
+    <!-- Contact Information -->
     <div class="container-xxl d-flex align-items-center">
         <p class="text-center text-body-secondary mb-0 me-5"><a class="text-primary" href="mailto:info@codedash.com">info@codedash.com</a></p>
         <p class="text-center text-body-secondary mb-0"><a class="text-primary" href="tel:+1234567890">+1 (234) 567-890</a></p>

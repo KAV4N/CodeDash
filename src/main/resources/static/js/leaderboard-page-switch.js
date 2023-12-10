@@ -25,7 +25,7 @@ function displayPage(pageNumber) {
   leaderboardBody.innerHTML = '';
 
   pageData.forEach((entry) => {
-    const row = `<tr>
+    const row = `<tr class="table-border-top">
                   <th scope="row">${entry.rank}</th>
                   <td>${entry.player}</td>
                   <td>${entry.score}</td>

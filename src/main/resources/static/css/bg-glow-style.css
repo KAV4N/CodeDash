@@ -47,5 +47,11 @@
     rotate: 360deg;
   }
 }
-
+/*
+@media only screen and (max-width: 1000px) {
+    #blob{
+      left: 50%;
+      top: 50%;
+    }
+}*/
 

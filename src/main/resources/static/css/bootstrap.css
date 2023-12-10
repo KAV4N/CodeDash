@@ -134,7 +134,7 @@
 
 [data-bs-theme=dark] {
   color-scheme: dark;
-  --custom-bg-color: rgba(25,25,25,0.9);
+  --custom-bg-color: rgba(30,31,35,0.9); /*25,25,25*/
   --custom-bg-dark-blue-color: #222529;
   --bs-body-color: #dee2e6;
   --bs-body-color-rgb: 222, 226, 230;
@@ -454,9 +454,18 @@ tfoot,
 tr,
 td,
 th {
+/*
   border-color: inherit;
   border-style: solid;
   border-width: 0;
+*/
+border: none;
+}
+
+.table-border-top{
+    border-top-style: solid;
+    border-top-color: #1A1C1F;
+    border-width: 1px;
 }
 
 label {
@@ -12506,7 +12515,7 @@ border: 0px none #858585;
 /*Remove this feature in a future with fixed header, it looks very bad now*/
 .navbar-default.scrolled {
     border-image-source: none;
-    background-color: rgba(25,25,25,1);
+    background-color: var(--custom-bg-color);
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #5297fc;
@@ -12519,15 +12528,62 @@ fill: currentColor;
 }
 
 .bg-blur{
-    background-color: rgba(33, 37, 41, 0.5);
+    /*background-color: rgba(33, 37, 41, 0.5);*/
     backdrop-filter: blur(12px);
+}
+
+.bg-blur-dark-gradient{
+    backdrop-filter: blur(12px);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, var(--custom-bg-color) 100%);
+}
+
+.border-dark-gradient-180{
+    border: 1rem solid;
+
+    border-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%,  var(--custom-bg-color) 100%);
+    border-image-slice: 1;
+    border-radius: 1rem;
+}
+
+
+.border-dark-gradient-0{
+    border: 1rem solid;
+
+    border-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%,  var(--custom-bg-color) 100%);
+    border-image-slice: 1;
+    border-radius: 1rem;
 }
 
 .height-500{
     height:500px;
+
+    /*
+    border-radius: 1rem;
+    border-width: 1rem;
+    border-color: var(--custom-bg-color);
+    border-style: solid;*/
 }
 
 .gray-gradient{
 background: rgb(43,48,53);
-background: linear-gradient(180deg, rgba(43,48,53,1) 0%, rgba(43,48,53,1) 51%, rgba(25,25,25,1) 100%);
+background: linear-gradient(180deg, rgba(43,48,53,1) 0%, rgba(43,48,53,1) 51%, var(0,0,0,0) 100%);
+}
+/*rgb(30 31 35/var(--tw-bg-opacity))*/
+.race-link{
+    transition: background-color 0.5s ease-out;
+}
+
+.race-link:hover {
+    background: rgba(var(--bs-primary-rgb), 1) !important;
+}
+
+.text-small{
+    font-size: 0.9rem;
+}
+
+.bg-blur-dark-50{
+    background: rgba(33, 37, 41, 0.5);
+}
+.table-btns-link:hover {
+    background: rgba(var(--bs-tertiary-bg-rgb), 1) !important;
 }

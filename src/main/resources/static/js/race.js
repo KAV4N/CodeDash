@@ -267,8 +267,8 @@ function gameOver(timeEnd) {
     if (timeEnd){
         countdownValue.textContent = '0';
     }
-
-    raceFinishedMessage.style.display = 'block';
+    raceFinishedMessage.classList.remove("d-none");
+    raceFinishedMessage.classList.add("d-block");
     userInput.value = '';
     userInput.disabled = true;
     clearInterval(countdownInterval);
