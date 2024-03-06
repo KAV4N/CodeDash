@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<header class="navbar navbar-expand-lg sticky-top navbar-default border-gradient only-bottom " th:fragment="header">
+  <nav class="container-xxl bd-gutter">
+    <div class="d-flex align-items-center">
+      <a data-value="CodeDash" class="navbar-brand codeDash-home" th:href="@{/}" style="width: 100px; display: inline-block; overflow: hidden; white-space: nowrap;">CodeDash</a>
+
+      <div class="vr"></div>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <hr class="solid">
+          <li>
+            <a th:classappend="${activePage == 'race' ? 'nav-link active' : 'nav-link'}" th:href="@{/race}">Race</a>
+          </li>
+          <li>
+            <a th:classappend="${activePage == 'leaderboard' ? 'nav-link active' : 'nav-link'}" th:href="@{/leaderboard}">Leaderboard</a>
+          </li>
+          <li>
+            <a th:classappend="${activePage == 'about' ? 'nav-link active' : 'nav-link'}" th:href="@{/about}">About</a>
+          </li>
+        </ul>
+        <hr class="solid">
+        <div>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li>
+              <form class="d-flex" role="search">
+                <input class="form-control me-sm-2  text-light" type="search" placeholder="Search player" aria-label="Search">
+              </form>
+            </li>
+            <hr class="solid">
+            <li>
+              <a class="btn btn-outline-light my-2 my-sm-0" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" style="width: 100px;">Log In</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+</body>
+</html>
