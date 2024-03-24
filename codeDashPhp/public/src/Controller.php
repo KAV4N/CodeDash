@@ -1,6 +1,5 @@
 <?php
 class Controller {
-
     public function runAction($actionName) {
         if(method_exists($this, 'runBeforeAction')){
             $result = $this->runBeforeAction();
@@ -17,5 +16,5 @@ class Controller {
         }
         
     }
+
 }
-?>

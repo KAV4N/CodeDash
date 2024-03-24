@@ -57,10 +57,23 @@ function createRandomCircle() {
     if (curCodes.length < maxCode) {
         const circle = document.createElement('div');
         circle.className = 'circle';
-
+        
         circle.style.left = Math.random() * 100 + "vw";
         const codeSnippetContainer = document.createElement("pre");
         codeSnippetContainer.className = "code-snippet-bg";
+        /*
+        codeSnippetContainer.style = `
+        border-radius: 50%;
+        box-shadow:
+        inset 0 0 50px #fff,   
+        inset 20px 0 80px #00f,  
+        inset -20px 0 80px #0af, 
+        inset 20px 0 300px #00f,  
+        inset -20px 0 300px #0af,
+        0 0 50px #fff,            
+        -10px 0 80px #00f,        
+        10px 0 80px #0af;       
+        `;*/
         const randomCodeSnippet = getRandomCodeSnippet();
         codeSnippetContainer.textContent = randomCodeSnippet;
         circle.appendChild(codeSnippetContainer);

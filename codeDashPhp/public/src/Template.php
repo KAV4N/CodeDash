@@ -17,5 +17,3 @@ class Template {
         include VIEW_PATH . 'layout/' . $this->layout .  '.html';  
     }
 }
-
-?>

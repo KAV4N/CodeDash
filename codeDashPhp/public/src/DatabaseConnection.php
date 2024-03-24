@@ -23,6 +23,3 @@ final class DatabaseConnection{
     }
 
 }
-
-
-?>
