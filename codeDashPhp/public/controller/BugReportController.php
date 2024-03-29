@@ -1,10 +1,10 @@
 <?php
 
-class HomePageController extends Controller{
+class BugReportController extends Controller{
 
     function defaultAction() {
         $template = new Template('default');
-        $template->view('index');
+        $template->view('reported-bug');
     }
     
 }

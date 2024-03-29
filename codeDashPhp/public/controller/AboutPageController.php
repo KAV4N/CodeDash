@@ -8,4 +8,3 @@ class AboutPageController extends Controller{
     }
     
 }
-?>

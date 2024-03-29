@@ -1,12 +1,11 @@
 <?php
-function active($currect_page){
-  $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
-  $url = end($url_array);  
-  if($currect_page == $url){
+function active($current_value){
+  if(isset($_GET["section"]) && $_GET["section"] == $current_value){
       echo 'active';
   } 
 }
 ?>
+
 
 <header class="navbar navbar-expand-lg sticky-top navbar-default border-gradient only-bottom ">
   <nav class="container-xxl bd-gutter">
@@ -23,13 +22,13 @@ function active($currect_page){
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <hr class="solid">
           <li>
-            <a class="nav-link <?php active('about.html');?>" href = "../public/index.php?section=race">Race</a>
+            <a class="nav-link <?php active('race');?>" href = "../public/index.php?section=race">Race</a>
           </li>
           <li>
-            <a class="nav-link <?php active('leaderboard.html');?>" href = "../public/index.php?section=leaderboard">Leaderboard</a>
+            <a class="nav-link <?php active('leaderboard');?>" href = "../public/index.php?section=leaderboard">Leaderboard</a>
           </li>
           <li>
-            <a class="nav-link <?php active('about.html');?>" href = "../public/index.php?section=about-us">About</a>
+            <a class="nav-link <?php active('about-us');?>" href = "../public/index.php?section=about-us">About</a>
           </li>
         </ul>
         <hr class="solid">

@@ -1,5 +1,7 @@
 <?php
-class CodeDto {
+
+
+class CodeDto{
     public string $id;
     public string $character;
 

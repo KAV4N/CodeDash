@@ -212,6 +212,7 @@ body, html{
     overflow: hidden;
 }
 
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -12586,4 +12587,8 @@ background: linear-gradient(180deg, rgba(43,48,53,1) 0%, rgba(43,48,53,1) 51%, v
 }
 .table-btns-link:hover {
     background: rgba(var(--bs-tertiary-bg-rgb), 1) !important;
+}
+
+.outline-text{
+  text-shadow: 0.5px 0.5px 0.5px #000;
 }

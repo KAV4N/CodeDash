@@ -1,4 +1,6 @@
-
+<head>
+	<link href="../public/view/static/css/countdown.css" rel="stylesheet">	
+</head>
 <main class="mb-auto container-xxl bd-gutter my-5"  layout:fragment="content" id="main-container">
 	<section class="d-flex flex-column rounded-3 gap-1">
 		<div class="p-3 shadow-lg rounded-3 bg-body-tertiary text-light align-items-center justify-content-center">
@@ -7,10 +9,10 @@
 				<p class="m-0 race-finished text-success d-none" id="race-finished"><strong>Finished!</strong></p>
 				<div class="d-flex ms-md-auto gap-2 flex-column flex-md-row w-50 justify-content-center align-items-center">
 					<div class="d-flex justify-content-center align-items-center text-center custom-bg-darkblue rounded-3 p-2 w-100">
-						<span>C++</span>
+						<span><?php echo $this->attributes["programmingLanguage"]; ?></span>
 					</div>
 					<div class="d-flex justify-content-center align-items-center text-center custom-bg-darkblue rounded-3 p-2 w-100">
-						<span class="text-danger">Medium</span>
+						<span class="text-danger"><?php echo $this->attributes["difficulty"]; ?></span>
 					</div>
 				</div>
 
@@ -27,30 +29,37 @@
 		<div class="d-flex flex-column flex-xl-row rounded-3 gap-1">
 			<div class="ide-sidebar d-flex flex-column align-items-start custom-bg-dark rounded-3">
 				<div class="d-flex justify-content-center flex-column w-100 p-2">
-					<h2 id="countdown-value" class="text-primary display-4 mb-0 text-center" th:text="${playTime}"></h2>
+					<h2 id="countdown-value" class="text-primary display-4 mb-0 text-center"><?php echo $this->attributes['time']?></h2>
 					<hr>
 					<p class="mb-0 text-center"> <span id="wpm-value" class="display-4 text-primary">0</span></p>
 					<p class="text-center m-0"><strong class="text-light">WPM</strong></p>
 					<hr class="solid" id="race-finished-hr">
-					<a class="btn btn-outline-info" th:href="@{/race}">Try Again!</a>
+					<a class="btn btn-outline-info" href = "../public/index.php?section=race">Try Again!</a>
 				</div>
 			</div>
 			<div class="ide-editor d-flex flex-column gap-1">
 				<div class="shadow-lg bg-body-tertiary rounded-3 p-3">
 					<div id="code-container" class="code-container mb-4 p-3 custom-bg-dark rounded-3 shadow-lg" style="max-height:250px;overflow-y:auto;">
 						<div class="line-numbers-container" id="line-numbers-container">
-							<th:block th:each="line : ${lineNumbers}">
-								<div class="text-primary line-number border-end border-primary" th:text="${line}"></div>
-							</th:block>
+							<?php foreach ($this->attributes['lineNumbers'] as $line): ?>
+								<div class="text-primary line-number border-end border-primary"><?php echo $line; ?></div>
+							<?php endforeach; ?>
 						</div>
+						
 						<div id="code-snippet" class="code-snippet-container" style="margin-bottom: 0;">
-							<th:block th:each="entry : ${codeData}">
-								<span class="char-code" th:id="${entry.id}" th:if="${entry.character == 'space'}">&nbsp;</span>
-								<span class="char-code" th:id="${entry.id}" th:if="${entry.character != 'space'}" th:text="${entry.character}"></span>
-								<br th:if="${entry.character == '⏎'}"/>
-							</th:block>
+							<?php foreach ($this->attributes['codeData'] as $entry): ?>
+								<?php if ($entry->character == 'space'): ?>
+									<span class="char-code" id="<?php echo $entry->id; ?>">&nbsp;</span>
+								<?php elseif ($entry->character == '⏎'): ?>
+									<span class="char-code" id="<?php echo $entry->id; ?>"><?php echo $entry->character; ?></span>
+									<br>
+								<?php else: ?>
+									<span class="char-code" id="<?php echo $entry->id; ?>"><?php echo $entry->character; ?></span>
+								<?php endif; ?>
+							<?php endforeach; ?>
 						</div>
 					</div>
+						
 					<input type="text" id="user-input" class="shadow-lg form-control custom-bg-dark text-light rounded-3" style="margin-bottom:1rem; background-color:rgba(34, 37, 41,1); border-width:0px;" placeholder="Type here..." autofocus>
 				</div>
 				<div class="d-flex flex-column flex-md-row flex-xl-row gap-1">
@@ -229,14 +238,7 @@
 		</div>
 	</div>
 </main>
-
-<div layout:fragment="java-scripts">
-	<script th:inline="javascript">
-		/*<![CDATA[*/
-            var maxId = /*[[${maxId}]]*/ 'default';
-            var countdownDuration = /*[[${playTime}]]*/ 'default';
-        /*]]>*/
-	</script>
-	<script src="js/race.js"></script>
-</div>
-
+<?php
+	echo "<script>var maxId = " . json_encode($this->attributes['maxId']) . ";var countdownDuration = " . json_encode($this->attributes['time']) . ";</script>";
+?>
+<script src="view/static/js/race.js"></script>

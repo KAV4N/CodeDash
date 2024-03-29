@@ -32,11 +32,20 @@ class Router{
             $leaderboardController = new LeaderboardController();
             $leaderboardController->runAction($action);
         }
-        else {
+        else if ($section == 'home'){
             include ROOT_PATH . 'controller/HomePageController.php';
             
             $homePageController = new HomePageController();
             $homePageController->runAction($action);   
+        }
+        else if ($section == 'reported-bug'){
+            include ROOT_PATH . 'controller/BugReportController.php';
+            $bugReportController = new BugReportController();
+            $bugReportController->runAction($action);   
+        }
+        else{
+            $defaultController = new Controller();
+            $defaultController->runAction("404");
         }
     }
     

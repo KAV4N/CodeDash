@@ -27,8 +27,8 @@
         <?php include VIEW_PATH . "fragments/footer.html" ?>
     
     </div>
-    <div layout:fragment="login"></div>
-    <div layout:fragment="bug-report"></div>
+    <?php include VIEW_PATH . "fragments/login.html" ?>
+    <?php include VIEW_PATH . "fragments/bug-report.html" ?>
 
     <div id="alertContainer" class="position-fixed bottom-0 start-0 end-0 p-3 w-100" style="z-index: 11">
         <div id="customAlert" class="d-none alert alert-success alert-dismissible fade show" role="alert">
@@ -44,9 +44,6 @@
 <script src="../public/view/static/js/navbar-color-change.js"></script>
 <script src="../public/view/static/js/signup.js"></script>
 <script src="../public/view/static/js/signup-show-alert.js"></script>
-
-<div layout:fragment="java-scripts">
-</div>
 
 </body>
 </html>
