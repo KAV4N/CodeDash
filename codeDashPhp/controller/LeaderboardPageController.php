@@ -1,6 +1,6 @@
 <?php
 
-class LeaderboardController extends Controller{
+class LeaderboardPageController extends Controller{
 
     function defaultAction() {
         $template = new Template('default');

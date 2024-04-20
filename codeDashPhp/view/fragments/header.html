@@ -1,11 +1,11 @@
 <?php
+
 function active($current_value){
   if(isset($_GET["section"]) && $_GET["section"] == $current_value){
       echo 'active';
   } 
 }
 ?>
-
 
 <header class="navbar navbar-expand-lg sticky-top navbar-default border-gradient only-bottom ">
   <nav class="container-xxl bd-gutter">
@@ -41,7 +41,14 @@ function active($current_value){
             </li>
             <hr class="solid">
             <li>
-              <a class="btn btn-outline-light my-2 my-sm-0" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" style="width: 100px;">Log In</a>
+              <?php
+                if(isset($_SESSION['user_id'])) {
+                  print_r($_SESSION);
+                  echo '<a class="btn btn-outline-light my-2 my-sm-0" href="../src/logout.php" style="width: 100px;">Log Out</a>';
+                } else {
+                  echo '<a class="btn btn-outline-light my-2 my-sm-0" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" style="width: 100px;">Log In</a>';
+                }
+              ?>
             </li>
           </ul>
         </div>

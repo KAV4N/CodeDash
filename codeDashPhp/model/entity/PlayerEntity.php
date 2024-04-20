@@ -9,13 +9,17 @@ class PlayerEntity extends Entity {
         parent::__construct($dbc, 'tbl_player');
         
     }
+
     protected function initFields() {
         
         $this->fields = [
             'id'=>null,
             'email'=>null,
+            'username'=>null,
+            'password'=> null,
             'exp'=>null,
             'level'=>null,
+            'role'=>null
         ];
         $this->foreignKeys = [
             "id_rank"=>new RankEntity($this->dbc)
@@ -30,11 +34,25 @@ class PlayerEntity extends Entity {
         return $this->fields["email"];
     }
     
+    
+    public function getUsername(){
+        return $this->fields["username"];
+    }
+
+    public function getPassword(){
+        return $this->fields["password"];
+    }
+    
     public function getLevel(){
         return $this->fields["level"];
+    }
+
+    public function getRole(){
+        return $this->fields["role"];
     }
 
     public function getRank(){
         return $this->foreignKeys["id_rank"];
     }
+
 }

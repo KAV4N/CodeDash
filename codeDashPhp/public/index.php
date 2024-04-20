@@ -4,12 +4,13 @@
 #https://stackoverflow.com/questions/38579325/where-do-services-go-in-mvc
 session_start();
 
-define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
+define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR);
 define('VIEW_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR);
 
 require_once ROOT_PATH . 'src/Controller.php';
 require_once ROOT_PATH . 'src/Template.php';
 require_once ROOT_PATH . 'src/DatabaseConnection.php';
+require_once ROOT_PATH . "src/Auth.php";
 require_once ROOT_PATH . "src/Router.php";
 
 
@@ -27,12 +28,21 @@ require_once ROOT_PATH . "model/entity/RankEntity.php";
 DatabaseConnection::connect("localhost","codedash_db", "root","");
 $dbc = DatabaseConnection::getConnection();
 
+
+$router = new Router($dbc);
+
+
+
+
 $section = $_GET['section'] ?? $_POST['section'] ?? 'home';
 $action = $_GET['action'] ?? $_POST['action'] ?? 'default';
 
 
-$router = new Router($dbc);
-$router->switchPage($section, $action);
+//$router = new Router($dbc);
+//$router->switchPage($section, $action);
 
+
+$router->populateDataByFieldName('section', $section);
+$router->switchPage($action);
 
 

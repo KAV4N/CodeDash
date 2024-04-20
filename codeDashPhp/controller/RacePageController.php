@@ -1,11 +1,14 @@
 <?php
+include ROOT_PATH . 'model/service/CodeService.php';
+include ROOT_PATH . 'model/mapper/CodeMapper.php';
 
 class RacePageController extends Controller{
-
     private $codeService;
 
-    public function __construct($codeService){
-        $this->codeService = $codeService;
+    public function __construct(){
+        $codeMapper = new CodeMapper();
+        $dbh = DatabaseConnection::getInstance();
+        $this->codeService = new CodeService($codeMapper, $dbh->getConnection());
     }
 
     function defaultAction() {

@@ -1,5 +1,5 @@
 <?php
-
+/*
 class Router{
     private $dbc;
 
@@ -49,4 +49,38 @@ class Router{
         }
     }
     
+}*/
+
+require_once ROOT_PATH . "src/Entity.php";
+
+class Router extends Entity {
+    
+    public function __construct($dbc) {
+        parent::__construct($dbc, 'tbl_routes');
+        
+    }
+    protected function initFields() {
+        
+        $this->fields = [
+            'id' => null,
+            'module' => null,
+            'section' => null,
+            'action' => null
+        ];
+    }
+
+
+    public function switchPage($action){
+        $controllerFile =  ROOT_PATH .'controller/' . $this->fields["module"]. 'Controller.php';
+        $controllerClassName = $this->fields["module"] . 'Controller';
+        //echo $controllerClassName;
+        if ($this->fields["id"] != null && file_exists($controllerFile)) {
+            include $controllerFile;
+            $controller = new $controllerClassName();
+            $controller->runAction($action);
+        } else {
+            $defaultController = new Controller();
+            $defaultController->runAction("404");
+        }
+    }
 }

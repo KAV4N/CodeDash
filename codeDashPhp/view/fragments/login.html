@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 </head>
 <body>
 
-<div class="modal fade" id="loginModal" tabindex="4" aria-labelledby="loginModalLabel" aria-hidden="true" th:fragment="login">
+<div class="modal fade" id="loginModal" tabindex="4" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
             <div class="modal-header bg-body-tertiary">
@@ -22,31 +22,35 @@
                 </ul>
                 <div class="tab-content mt-3">
                     <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                        <form  id="loginForm">
+                        <form  id="loginForm" method="post" action="../public/index.php">
+                            <input type="hidden" name="section" value="auth">
+                            <input type="hidden" name="action" value="login">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                                <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" required>
                             </div>
                             <button type="submit" class="btn btn-primary w-100 mt-5">Log In</button>
                         </form>
                     </div>
                     <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
-                        <form id="signupForm">
+                        <form id="signupForm"  method="post" action="../public/index.php">
+                            <input type="hidden" name="section" value="auth">
+                            <input type="hidden" name="action" value="register">
                             <div class="mb-3">
                                 <label for="newEmail" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="newEmail" placeholder="Enter your email" required>
+                                <input type="email" name="email" class="form-control" id="newEmail" placeholder="Enter your email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="newUsername" class="form-label">New Username</label>
-                                <input type="text" class="form-control" id="newUsername" placeholder="Enter your new username" required>
+                                <input type="text" name="username" class="form-control" id="newUsername" placeholder="Enter your new username" required>
                             </div>
                             <div class="mb-3">
                                 <label for="newPassword" class="form-label">New Password</label>
-                                <input type="password" class="form-control" id="newPassword" placeholder="Enter your new password" required>
+                                <input type="password" name="password" class="form-control" id="newPassword" placeholder="Enter your new password" required>
                             </div>
                             <div class="form-check mb-3">
                                 <input type="checkbox" class="form-check-input" id="consentCheckbox" required>
