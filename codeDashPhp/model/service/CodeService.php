@@ -25,17 +25,24 @@ class CodeService{
         $this->dbc = $dbc;
     }
 
-    public function getRandomCodeDto(): RaceDataDto{
+    public function getRandomCodeDto(){
         $codeEntity = new CodeEntity($this->dbc);
         $codeEntity->populateRandomData();
-
-        //TODO spravit pridanie objektov napr get difficulty, codeEntity bude mat ulozene objekty DifficultyEntity ktore pri volani fetchu bude mozene zavolat
+        if ($codeEntity->getId()){
+            return new RaceDataDto(
+                $codeEntity->getPlayer()->getUsername(),
+                $codeEntity->getDifficulty()->getName(),
+                $codeEntity->getLanguageName()->getLanguageName(),
+                $codeEntity->getDifficulty()->getTime(),
+                $this->codeMapper->parseCodeSnippet($codeEntity->getSnippet())
+            );
+        }
         return new RaceDataDto(
-            $codeEntity->getPlayer()->getEmail(),
-            $codeEntity->getDifficulty()->getName(),
-            $codeEntity->getLanguageName()->getLanguageName(),
-            $codeEntity->getDifficulty()->getTime(),
-            $this->codeMapper->parseCodeSnippet($codeEntity->getSnippet())
+            "None",
+            "None",
+            "None",
+            0,
+            $this->codeMapper->parseCodeSnippet("None")
         );
     }
 }

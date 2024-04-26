@@ -6,7 +6,7 @@ require_once ROOT_PATH . "src/Entity.php";
 class RankEntity extends Entity {
 
     public function __construct($dbc) {
-        parent::__construct($dbc, 'tbl_rank');
+        parent::__construct($dbc, 'tbl_ranks');
     }
 
     protected function initFields() {
@@ -14,7 +14,7 @@ class RankEntity extends Entity {
             'id'=>null,
             'name'=>null,
             'exp'=>null,
-            'picture'=>null
+            'level'=>null
         ];
     }
 
@@ -30,7 +30,7 @@ class RankEntity extends Entity {
         return $this->fields["exp"];
     }
 
-    public function getPicture() {
-        return $this->fields["picture"];
+    public function getLevel() {
+        return $this->fields["level"];
     }
 }

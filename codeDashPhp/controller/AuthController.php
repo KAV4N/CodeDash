@@ -15,31 +15,41 @@ class AuthController extends Controller {
         }
     }*/
     
-    public function loginAction() {
+    public function defaultAction(){
+        $template = new Template('default');
+        $template->view('auth');
+    }
 
+    public function loginAction() {
         if($_POST['action'] ?? "" == "login"){
             $email = $_POST['email'] ?? '';
             $password = $_POST['password'] ?? '';
             $auth = new Auth();
-            $auth->loginUser($email, $password);
-            header('Location: ../public/index.php');
-            exit();
+            $suc = $auth->loginUser($email, $password);
+            $this->switchContent($suc);
+        
         }
     }
 
     public function registerAction(){
-        
         if($_POST['action'] ?? "" == "register"){
             $email = $_POST['email'] ?? '';
             
             $username = $_POST['username'] ?? '';
             $password = $_POST['password'] ?? '';
             $auth = new Auth();
-            
-            if($auth->registerUser($email, $username, $password)){
-                header('Location: ../public/index.php');
-                exit();
-            }
+            $suc = $auth->registerUser($email, $username, $password);
+            $this->switchContent($suc);
+        }   
+    }
+
+    private function switchContent($suc){
+        if ($suc){
+            $template = new Template('default');
+            $template->view('index');
+        }else{
+            $template = new Template('default');
+            $template->view('auth');
         }
     }
 

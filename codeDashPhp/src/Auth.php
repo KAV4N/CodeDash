@@ -24,24 +24,36 @@ class Auth {
         $dbc = $dbh->getConnection();
         
         $newUser = new PlayerEntity($dbc);
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $data = [
-            'email' =>$email,
-            'username' =>$username,
-            'password' => $hashedPassword,
-            'exp' => 0,
-            'level' => 1,
-            'role' => 0,
-            'id_rank' => 1
-        ];
-        
-        if ($newUser->insertData($data)) {
-            $newUser->populateDataByFieldName("email",$email);
-            $_SESSION["user_id"] = $newUser->getId();
-            $_SESSION["is_admin"] = $newUser->getRole();
-            return true; 
-        } else {
+        $newUser->populateDataByFieldName("email", $email);
+        if($newUser->getId() == null){
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $data = [
+                'email' =>$email,
+                'username' =>$username,
+                'password' => $hashedPassword,
+                'exp' => 0,
+                'rank_id' => 1,
+                'typed'=>0,
+                'errors'=>0,
+                'aboutme'=>null,
+                'is_admin' => 0,
+                'is_banned' => 0
+                
+            ];
+            
+            if ($newUser->insertData($data)) {
+                $newUser->populateDataByFieldName("email",$email);
+                $_SESSION["user_id"] = $newUser->getId();
+                $_SESSION["is_admin"] = $newUser->getRole();
+                return true; 
+            } else {
+                return false;
+            }
+            
+        }else{
             return false;
         }
+
+       
     }
 }

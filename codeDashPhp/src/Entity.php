@@ -37,6 +37,7 @@ abstract class Entity {
 
     public function populateData($id) {
         try {
+            
             $sql = "SELECT * FROM " . $this->tableName . " WHERE id = :id";
             $stmt = $this->dbc->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -48,7 +49,6 @@ abstract class Entity {
             $this->populateEntityData($result);
             return true;
         } catch (PDOException $e) {
-            //echo "Error: " . $e->getMessage();
             return false;
         }
     }
@@ -77,6 +77,7 @@ abstract class Entity {
                     $this->fields[$fieldName] = $data;
     
                 }else if (array_key_exists($fieldName, $this->foreignKeys)){
+                    
                     $this->foreignKeys[$fieldName]->populateData($data);
                 }
             }
