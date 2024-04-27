@@ -17,6 +17,7 @@ class PlayerEntity extends Entity {
             'email'=>null,
             'username'=>null,
             'password'=> null,
+            'join_date'=>null,
             'exp'=>null,
             'typed'=>null,
             'errors'=>null,
@@ -29,6 +30,8 @@ class PlayerEntity extends Entity {
             "rank_id"=> new RankEntity($this->dbc),
         ];
     }
+
+   
 
     public function getId(){
         return $this->fields["id"];
@@ -46,7 +49,9 @@ class PlayerEntity extends Entity {
     public function getPassword(){
         return $this->fields["password"];
     }
-
+    public function getJoinDate(){
+        return $this->fields["join_date"];
+    }
 
     public function getExp(){
         return $this->fields["exp"];

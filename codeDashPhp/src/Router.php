@@ -64,8 +64,7 @@ class Router extends Entity {
         $this->fields = [
             'id' => null,
             'module' => null,
-            'section' => null,
-            'action' => null
+            'section' => null
         ];
     }
 

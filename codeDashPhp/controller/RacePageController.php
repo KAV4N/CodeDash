@@ -20,7 +20,10 @@ class RacePageController extends Controller{
         $creatorName = $data->creatorName;
         $difficulty = $data->difficulty;
         $programmingLanguage = $data->programmingLanguage;
+        $description = $data->description;
         $time = $data->time;
+        $raceStats = $data->raceStats;
+        $creationDate = $data->createdAt;
 
         $codeDataSize = count($codeData);
         $maxId = $codeDataSize > 0 ? $codeDataSize - 1 : 0;
@@ -32,8 +35,10 @@ class RacePageController extends Controller{
         $template->addAttribute("maxId", $maxId);
         $template->addAttribute("creatorName", $creatorName);
         $template->addAttribute("difficulty", $difficulty);
-        $template->addAttribute("playTime", $time);
+        $template->addAttribute("createdAt", $creationDate);
         $template->addAttribute("programmingLanguage", $programmingLanguage);
+        $template->addAttribute("description", $description);
+        $template->addAttribute("raceStats", $raceStats);
         $template->addAttribute("time", $time);
 
         $template->view('race');

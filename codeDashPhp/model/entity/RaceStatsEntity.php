@@ -14,8 +14,9 @@ class RaceStatsEntity extends Entity {
         $this->fields = [
             'id'=>null,
             'wpm'=>null,
-            'timeLeft'=>null,
-            'accuracy'=>null
+            'time_left'=>null,
+            'accuracy'=>null,
+            'play_date'=>null
         ];
         $this->foreignKeys = [
             "player_id" => new PlayerEntity($this->dbc),
@@ -32,7 +33,7 @@ class RaceStatsEntity extends Entity {
     }
 
     public function getTimeLeft() {
-        return $this->fields["timeLeft"];
+        return $this->fields["time_left"];
     }
 
     public function getAccuracy() {

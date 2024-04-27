@@ -3,23 +3,34 @@ require_once ROOT_PATH . "src/TupleLineCode.php";
 
 class RaceDataDto {
     
-    public string $creatorName;
-    public string $difficulty;
-    public string $programmingLanguage;
-    public int $time;
-    public TupleLineCode $lineCode;
+    public  $creatorName;
+    public  $difficulty;
+    public  $programmingLanguage;
+    public  $time;
+    public $description;
+    public  $lineCode;
+
+    public $raceStats;
+
+    public $createdAt;
 
     public function __construct(
         string $creatorName,
         string $difficulty,
         string $programmingLanguage,
         int $time,
-        TupleLineCode $lineCode
+        TupleLineCode $lineCode,
+        $raceStats,
+        $createdAt,
+        $description = null,
     ) {
         $this->creatorName = $creatorName;
         $this->difficulty = $difficulty;
         $this->programmingLanguage = $programmingLanguage;
         $this->time = $time;
         $this->lineCode = $lineCode;
+        $this->description = $description;
+        $this->raceStats = $raceStats;
+        $this->createdAt = $createdAt;
     }
 }

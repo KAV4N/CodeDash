@@ -11,6 +11,8 @@ class PlayerDto {
 
     public $level;
 
+    public $raceStats;
+
     public function __construct(
         $username,
         $exp,
@@ -19,7 +21,8 @@ class PlayerDto {
         $errors,
         $rank,
         $maxExp,
-        $level
+        $level,
+        $raceStats
     ) {
         $this->username = $username;
         $this->aboutme = $aboutme;
@@ -29,5 +32,6 @@ class PlayerDto {
         $this->rank = $rank;
         $this->maxExp = $maxExp;
         $this->level = $level;
+        $this->raceStats = $raceStats;
     }
 }

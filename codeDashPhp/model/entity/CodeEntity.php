@@ -14,6 +14,8 @@ class CodeEntity extends Entity {
         $this->fields = [
             'id'=>null,
             'snippet'=>null,
+            'creation_date'=>null,
+            'description'=>null
         ];
 
         $this->foreignKeys = [
@@ -30,7 +32,14 @@ class CodeEntity extends Entity {
     public function getSnippet() {
         return $this->fields["snippet"];
     }
+    public function getCreationDate(){
+        return $this->fields["creation_date"];
+    }
 
+    public function getDescription(){
+        return $this->fields["description"];
+    }
+    
     public function getDifficulty() {
         return $this->foreignKeys["difficulty_id"];
     }
@@ -42,5 +51,7 @@ class CodeEntity extends Entity {
     public function getLanguageName() {
         return $this->foreignKeys["language_name_id"];
     }
+
+
 
 }

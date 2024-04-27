@@ -9,51 +9,52 @@
                 </div>
             </div>
             <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-2 d-flex align-items-center justify-content-between text-center ">
-                            <!-- <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="User Image"> -->
-                            <h5 class="my-2" ><strong id="username"><?php echo $this->attributes["username"]; ?></strong></h5>
-                        </div>
-                        
-                        <div class="col-md-1 align-self-center">
-                            
-                        </div>
-                        <div class="col-md-9 m-0 p-0"> 
-                            <hr class="mb-3">
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <div class="progress" style="height: 25px;">
-                                        <div id="race-progress" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-label="Animated striped example" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">0%</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center custom-bg-darkblue rounded p-2">
-                                    <div class="text-light"><strong>Level <span id="level-counter"><?php echo $this->attributes["level"]; ?></span></strong></div>
-                                    <span class="text-success" ><strong id="rank"><?php echo $this->attributes["rank"]; ?></strong></span>
+                <div class="row align-items-center">
+                    <div class="col-md-2 d-flex align-items-center justify-content-between text-center">
+                        <!-- <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="User Image"> -->
+                        <h5 class="my-2"><strong id="username"><?php echo $this->attributes["username"]; ?></strong></h5>
+                    </div>
+
+                    <div class="col-md-1 align-self-center">
+
+                    </div>
+                    <div class="col-md-9 m-0 p-0">
+                        <hr class="mb-3">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <div class="progress" style="height: 25px;">
+                                    <div id="exp-progress" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-label="Animated striped example" aria-valuemin="0" aria-valuemax="100" style='width: <?php echo $this->attributes["expPercentage"]; ?>%;'> <?php echo $this->attributes["expPercentage"]; ?>%</div>
                                 </div>
                             </div>
-                            <hr class="my-2">
+                            <div class="d-flex justify-content-between align-items-center custom-bg-darkblue rounded p-2">
+                                <div class="text-light"><strong>Level <span id="level-counter"><?php echo $this->attributes["level"]; ?></span></strong></div>
+                                <span class="text-success"><strong id="rank"><?php echo $this->attributes["rank"]; ?></strong></span>
+                            </div>
                         </div>
+                        <hr class="my-2">
                     </div>
                 </div>
-                
-
+            </div>
         </div>
 
         <div class="d-flex flex-column flex-xl-row rounded-3 gap-1">
-             <div class="ide-sidebar d-flex flex-column align-items-start p-0 gap-1" style="min-width: 20em;">
+            <div class="col-xl-2 ide-sidebar d-flex flex-column align-items-start p-0 gap-1">
                 <div class="d-flex justify-content-center flex-column w-100">
-                    <a href="" class="btn btn-outline-info">Update Profile</a>
+                    <a href="../public/index.php?section=update-profile" class="btn btn-outline-info">Update Profile</a>
                 </div>
-                <div class="d-flex flex-grow-1 flex-column w-100 p-3 custom-bg-dark rounded-3">
+                <div class="d-flex flex-grow-1 flex-column w-100 p-3 custom-bg-dark rounded-3" style="overflow: auto;">
                     <h5 class="mb-0">About Me</h5>
                     <hr>
-                    <p id="about-me"><?php echo $this->attributes["aboutme"]; ?></p>
+                    <p id="about-me" style="word-wrap: break-word;"><?php echo $this->attributes["aboutme"]; ?></p>
                 </div>
             </div>
 
 
-            <div class="ide-editor d-flex flex-column gap-1">
 
+            <div class="col-xl-10 ide-editor d-flex flex-column gap-1">
+                <div class="d-flex justify-content-center flex-column w-100">
+                    <a href="../public/index.php?section=create-race" class="btn btn-outline-info">Create Race</a>
+                </div>
                 <div class="shadow-lg bg-body-tertiary rounded-3 p-3" style="flex-grow: 2;" id="userStats">
                     <div class="row row-cols-1 row-cols-md-3">
                         <div class="col">
@@ -84,7 +85,7 @@
                 <div class="d-flex flex-column flex-md-row flex-xl-row gap-1">
 
 
-                    <div class="shadow-lg bg-body-tertiary rounded-3 p-3 justify-content-center align-items-center" style="flex-grow: 10;">
+                    <div class="col shadow-lg bg-body-tertiary rounded-3 p-3 justify-content-center align-items-center" style="flex-grow: 10;">
                         <h5 class="mb-0">Last 10 <span class="text-primary">games</span></h5>
                         <hr>
                         <div class="scrollable-table rounded-3 overflow-auto custom-bg-darkblue" style="height: 250px;">
@@ -99,13 +100,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="table-border-top">
-                                        <th scope="row">C++</th>
-                                        <td>Hard</td>
-                                        <td>75</td>
-                                        <td>3:42</td>
-                                        <td>98%</td>
-                                    </tr>
+                                    <?php foreach ($this->attributes["raceStats"] as $stat): ?>
+                                        <tr class="table-border-top">
+                                            <td><?php echo $stat->language; ?></td>
+                                            <td><?php echo $stat->difficulty; ?></td>
+                                            <td><?php echo $stat->wpm; ?></td>
+                                            <td><?php echo $stat->timeLeft; ?></td>
+                                            <td><?php echo $stat->accuracy; ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

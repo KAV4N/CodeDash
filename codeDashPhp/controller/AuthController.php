@@ -21,26 +21,24 @@ class AuthController extends Controller {
     }
 
     public function loginAction() {
-        if($_POST['action'] ?? "" == "login"){
-            $email = $_POST['email'] ?? '';
-            $password = $_POST['password'] ?? '';
-            $auth = new Auth();
-            $suc = $auth->loginUser($email, $password);
-            $this->switchContent($suc);
+        $email = $_POST['email'] ?? '';
+        $password = $_POST['password'] ?? '';
+        $auth = new Auth();
+        $suc = $auth->loginUser($email, $password);
+        $this->switchContent($suc);
         
-        }
+        
     }
 
     public function registerAction(){
-        if($_POST['action'] ?? "" == "register"){
-            $email = $_POST['email'] ?? '';
-            
-            $username = $_POST['username'] ?? '';
-            $password = $_POST['password'] ?? '';
-            $auth = new Auth();
-            $suc = $auth->registerUser($email, $username, $password);
-            $this->switchContent($suc);
-        }   
+        $email = $_POST['email'] ?? '';
+        
+        $username = $_POST['username'] ?? '';
+        $password = $_POST['password'] ?? '';
+        $auth = new Auth();
+        $suc = $auth->registerUser($email, $username, $password);
+        $this->switchContent($suc);
+         
     }
 
     private function switchContent($suc){

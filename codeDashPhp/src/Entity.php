@@ -105,4 +105,102 @@ abstract class Entity {
         }
     }
 
+    public function getEntitiesByColumnValue($fieldName, $value) {
+        try {
+            $entities = [];
+            
+            $sql = "SELECT * FROM $this->tableName WHERE $fieldName = :value";
+            $stmt = $this->dbc->prepare($sql);
+            $stmt->bindParam(':value', $value);
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach ($results as $result) {
+                $entity = new static($this->dbc); 
+                $entity->populateEntityData($result);
+                $entities[] = $entity; 
+            }
+            
+            return $entities;
+        } catch (PDOException $e) {
+            return array();
+        }
+    }
+    
+    public function getTopEntitiesByColumnValue($fieldName, $value, $orderFieldName, $order = 'ASC', $amount = null) {
+        try {
+            $entities = [];
+            
+            $order = strtoupper($order);
+            if ($order !== 'ASC' && $order !== 'DESC') {
+                throw new InvalidArgumentException("Invalid order parameter.");
+            }
+            
+            $sql = "SELECT * FROM $this->tableName WHERE $fieldName = :value ORDER BY $orderFieldName $order";
+            $sql = ($amount !== null) ? $sql .  " LIMIT :amount" : $sql;
+            $stmt = $this->dbc->prepare($sql);
+            $stmt->bindParam(':value', $value);
+            $stmt->bindParam(':amount', $amount, PDO::PARAM_INT);
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach ($results as $result) {
+                $entity = new static($this->dbc); 
+                $entity->populateEntityData($result);
+                $entities[] = $entity; 
+            }
+            
+            return $entities;
+        } catch (PDOException $e) {
+            return array();
+        }
+    }
+
+    public function updateData($id, $data){
+        try {
+            $setValues = [];
+            foreach ($data as $key => $value) {
+                $setValues[] = "$key = :$key";
+            }
+            $setClause = implode(', ', $setValues);
+
+            $sql = "UPDATE $this->tableName SET $setClause WHERE id = :id";
+            $stmt = $this->dbc->prepare($sql);
+
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            foreach ($data as $key => $value) {
+                $stmt->bindValue(":$key", $value);
+            }
+          
+            $stmt->execute();
+            return $this->populateData($id);
+
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+    
+    public function selectAllEntities() {
+        try {
+            $entities = [];
+    
+            $sql = "SELECT * FROM $this->tableName";
+            $stmt = $this->dbc->prepare($sql);
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            foreach ($results as $result) {
+                $entity = new static($this->dbc);
+                $entity->populateEntityData($result);
+                $entities[] = $entity;
+            }
+    
+            return $entities;
+        } catch (PDOException $e) {
+            return array();
+        }
+    }
+        
+
 }

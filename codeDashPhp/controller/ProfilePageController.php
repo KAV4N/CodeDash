@@ -21,6 +21,7 @@ class ProfilePageController extends Controller{
         $template = new Template('default');
         
         $accuracy = $data->errors / ($data->typed == 0 ? 1 : $data->typed);
+        $expPercentage = ($data->exp / ($data->maxExp == 0 ? 1 : $data->maxExp)) * 100;
 
         $template->addAttribute("username", $data->username);
         $template->addAttribute("aboutme", $data->aboutme);
@@ -28,9 +29,12 @@ class ProfilePageController extends Controller{
         $template->addAttribute("errors", $data->errors);
         $template->addAttribute("accuracy", $accuracy);
         $template->addAttribute("rank", $data->rank);
+        $template->addAttribute("exp", $data->exp);
         $template->addAttribute("maxExp", $data->maxExp);
         $template->addAttribute("level", $data->level);
-        $template->view('user');
+        $template->addAttribute("raceStats",$data->raceStats);
+        $template->addAttribute("expPercentage", $expPercentage);
+        $template->view('profile');
     }
     
 }

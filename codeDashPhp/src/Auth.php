@@ -1,6 +1,7 @@
 <?php
 
 require_once ROOT_PATH . "model/entity/PlayerEntity.php";
+require_once ROOT_PATH . "model/entity/RankEntity.php";
 class Auth {
 
     public function loginUser($email, $password) {
@@ -23,6 +24,10 @@ class Auth {
         $dbh = DatabaseConnection::getInstance();
         $dbc = $dbh->getConnection();
         
+        $rankEntity = new RankEntity($dbc);
+        $rankEntity->populateDataByFieldName("level", 1);
+
+
         $newUser = new PlayerEntity($dbc);
         $newUser->populateDataByFieldName("email", $email);
         if($newUser->getId() == null){
@@ -31,8 +36,9 @@ class Auth {
                 'email' =>$email,
                 'username' =>$username,
                 'password' => $hashedPassword,
+                'join_date'=> date("Y-m-d H:i:s"),
                 'exp' => 0,
-                'rank_id' => 1,
+                'rank_id' => $rankEntity->getLevel(),
                 'typed'=>0,
                 'errors'=>0,
                 'aboutme'=>null,
