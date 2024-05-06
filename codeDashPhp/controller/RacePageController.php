@@ -14,34 +14,43 @@ class RacePageController extends Controller{
     function defaultAction() {
         $data = $this->codeService->getRandomCodeDto();
         $template = new Template('default');
+        if ($data!==null){
+            $codeData = $data->lineCode->codeSnippet;
+            $lineNumbers = $data->lineCode->lineNumbers;
+            $creatorName = $data->creatorName;
+            $difficulty = $data->difficulty;
+            $programmingLanguage = $data->programmingLanguage;
+            $description = $data->description;
+            $time = $data->time;
+            $raceStats = $data->raceStats;
+            $creationDate = $data->createdAt;
+            $codeId = $data->codeId;
 
-        $codeData = $data->lineCode->codeSnippet;
-        $lineNumbers = $data->lineCode->lineNumbers;
-        $creatorName = $data->creatorName;
-        $difficulty = $data->difficulty;
-        $programmingLanguage = $data->programmingLanguage;
-        $description = $data->description;
-        $time = $data->time;
-        $raceStats = $data->raceStats;
-        $creationDate = $data->createdAt;
+            $codeDataSize = count($codeData);
+            $maxId = $codeDataSize > 0 ? $codeDataSize - 1 : 0;
+            
+            $template->addAttribute("activePage", "race");
+    
+            $template->addAttribute("lineNumbers", $lineNumbers);
+            $template->addAttribute("codeData", $codeData);
+            $template->addAttribute("maxId", $maxId);
+            $template->addAttribute("creatorName", $creatorName);
+            $template->addAttribute("difficulty", $difficulty);
+            $template->addAttribute("createdAt", $creationDate);
+            $template->addAttribute("programmingLanguage", $programmingLanguage);
+            $template->addAttribute("description", $description);
+            $template->addAttribute("raceStats", $raceStats);
+            $template->addAttribute("time", $time);
+            $template->addAttribute("codeId", $codeId);
 
-        $codeDataSize = count($codeData);
-        $maxId = $codeDataSize > 0 ? $codeDataSize - 1 : 0;
-        
-        $template->addAttribute("activePage", "race");
+            $template->view('race');
 
-        $template->addAttribute("lineNumbers", $lineNumbers);
-        $template->addAttribute("codeData", $codeData);
-        $template->addAttribute("maxId", $maxId);
-        $template->addAttribute("creatorName", $creatorName);
-        $template->addAttribute("difficulty", $difficulty);
-        $template->addAttribute("createdAt", $creationDate);
-        $template->addAttribute("programmingLanguage", $programmingLanguage);
-        $template->addAttribute("description", $description);
-        $template->addAttribute("raceStats", $raceStats);
-        $template->addAttribute("time", $time);
+        }else{
+            $template->view('statusPages/404');
+        }
+     
 
-        $template->view('race');
+       
     }
     
 }

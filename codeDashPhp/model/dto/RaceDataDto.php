@@ -14,6 +14,8 @@ class RaceDataDto {
 
     public $createdAt;
 
+    public $codeId;
+
     public function __construct(
         string $creatorName,
         string $difficulty,
@@ -22,6 +24,7 @@ class RaceDataDto {
         TupleLineCode $lineCode,
         $raceStats,
         $createdAt,
+        $codeId,
         $description = null,
     ) {
         $this->creatorName = $creatorName;
@@ -32,5 +35,6 @@ class RaceDataDto {
         $this->description = $description;
         $this->raceStats = $raceStats;
         $this->createdAt = $createdAt;
+        $this->codeId = $codeId;
     }
 }

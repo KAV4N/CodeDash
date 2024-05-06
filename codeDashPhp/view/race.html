@@ -154,7 +154,14 @@
         </div>
     </div>
 </main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <?php
-echo "<script>var maxId = " . json_encode($this->attributes['maxId']) . ";var countdownDuration = " . json_encode($this->attributes['time']) . ";</script>";
+echo "
+    <script>
+        var maxId = " . json_encode($this->attributes['maxId']) . ";
+        var countdownDuration = " . json_encode($this->attributes['time']) . ";
+        var codeId = ". json_encode($this->attributes['codeId']) .";
+        var difficulty = ". json_encode($this->attributes['difficulty']) .";
+    </script>";
 ?>
 <script src="../view/static/js/race.js"></script>

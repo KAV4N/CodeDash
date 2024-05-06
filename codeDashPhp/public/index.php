@@ -12,8 +12,7 @@ require_once ROOT_PATH . 'src/Template.php';
 require_once ROOT_PATH . 'src/DatabaseConnection.php';
 require_once ROOT_PATH . "src/Auth.php";
 require_once ROOT_PATH . "src/Router.php";
-
-
+require_once ROOT_PATH . "src/databaseConfig.php";
 /*
 require_once ROOT_PATH . "model/entity/CodeEntity.php";
 require_once ROOT_PATH . "model/entity/DifficultyEntity.php";
@@ -25,7 +24,7 @@ require_once ROOT_PATH . "model/entity/RankEntity.php";
 
 
 
-DatabaseConnection::connect("localhost","codedash_db", "root","");
+DatabaseConnection::connect($config["host"],$config["dbname"], $config["username"],$config["password"]);
 $dbc = DatabaseConnection::getConnection();
 
 

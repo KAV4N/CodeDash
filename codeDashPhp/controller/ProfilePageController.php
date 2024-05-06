@@ -20,7 +20,9 @@ class ProfilePageController extends Controller{
         $data = $this->playerService->getPlayerData();
         $template = new Template('default');
         
-        $accuracy = $data->errors / ($data->typed == 0 ? 1 : $data->typed);
+        $accuracy = ($data->typed == 0) ? 0 : (1 - ($data->errors / $data->typed)) * 100;
+        $accuracy = number_format($accuracy, 2);
+
         $expPercentage = ($data->exp / ($data->maxExp == 0 ? 1 : $data->maxExp)) * 100;
 
         $template->addAttribute("username", $data->username);

@@ -23,8 +23,8 @@ const codeContainer = document.getElementById("code-container");
 const raceProgress = document.getElementById("race-progress");
 
 
-
-
+let wpm = 0;
+let accuracy = 0;
 
 
 userInput.addEventListener('input', checkInput);
@@ -92,16 +92,15 @@ const mainContainer = document.getElementById("main-container");
 const countNumbers = ["3","2","1","Go!"];
 let countdownTime = 0;
 
-
-function startCountdown(duration) {
-    let remainingTime = duration;
+countdownDuration = 3;
+function startCountdown() {
     countdownInterval = setInterval(() => {
-        if (remainingTime <= 0) {
+        if (countdownDuration <= 0) {
             clearInterval(countdownInterval);
             gameOver(true);
         } else if (!userInput.disabled){
-            countdownValue.textContent = remainingTime;
-            remainingTime--;
+            countdownValue.textContent = countdownDuration;
+            countdownDuration--;
         }
     }, 1000);
     
@@ -118,7 +117,7 @@ function startCountdownTimer() {
 
     if (countdownTime > countNumbers.length) {
         countdownElementStart.style.opacity = 0;
-        startCountdown(countdownDuration);
+        startCountdown();
         mainContainer.removeChild(countdownContainerStart);
         userInput.disabled = false;
         userInput.focus();
@@ -273,7 +272,16 @@ function gameOver(timeEnd) {
     userInput.disabled = true;
     clearInterval(countdownInterval);
     calculateResults();
-
+    data = {
+        "time_left" : countdownDuration,
+        "wpm" : wpm,
+        "accuracy" : accuracy,
+        "code_id" : codeId,
+        "typed" : totalTypedChars,
+        "errors":totalErrors,
+        "difficulty":difficulty
+    };
+    fetchData(data);
 
 }
 
@@ -282,7 +290,7 @@ function gameOver(timeEnd) {
 
 function calculateWpm(){
     const endTime = new Date().getTime();
-    const timeElapsed = (endTime - startTime) / 1000; // in seconds
+    const timeElapsed = (endTime - startTime) / 1000;
     return Math.round((totalTypedWords / timeElapsed) * 60);
 }
 
@@ -296,10 +304,33 @@ function getRaceProgress(maxPoz,cur){
 
 
 function calculateResults() {
-    document.getElementById('wpm-value').textContent = calculateWpm();
+    wpm = calculateWpm();
+    accuracy = calculateAccuracy();
+
+
+    document.getElementById('wpm-value').textContent = wpm;
     document.getElementById('errors-value').textContent = totalErrors;
-    document.getElementById('accuracy-value').textContent = calculateAccuracy() + '%';
+    document.getElementById('accuracy-value').textContent = accuracy + '%';
     document.getElementById('total-words-typed-value').textContent = totalTypedChars;
+}
+
+
+function fetchData(data){
+    console.log("Fetching data...");
+    let jsonString = JSON.stringify(data);
+    $.ajax({
+        type: "POST",
+        url: "../src/processRaceData.php",
+        data: {raceData : jsonString}, 
+        cache: false,
+        success: function(response) {
+            console.log("AJAX request successful:", response);
+        },
+        error: function(xhr, status, error) {
+            console.error("AJAX request failed:", status, error);
+        }
+    });
+    console.log("Data fetched.");
 }
 
 

@@ -1,5 +1,6 @@
 <?php
 require_once ROOT_PATH . "model/dto/RaceDataDto.php";
+require_once ROOT_PATH . "model/dto/RaceStatsDto.php";
 require_once ROOT_PATH . "model/entity/CodeEntity.php";
 require_once ROOT_PATH . "model/entity/RaceStatsEntity.php";
 
@@ -35,10 +36,11 @@ class CodeService{
         foreach ($raceStats as $entity) {
             $dto = new RaceStatsDto(
                 $entity->getCode()->getLanguageName()->getLanguageName(),
-                $entity->getCode()->getDifficulty()->getName(),
+                null,
                 $entity->getWpm(),
                 $entity->getTimeLeft(),
-                $entity->getAccuracy()
+                $entity->getAccuracy(),
+                $entity->getPlayer()->getUsername()
             );
             $dtos[] = $dto;
         }
@@ -60,18 +62,12 @@ class CodeService{
                 $this->codeMapper->parseCodeSnippet($codeEntity->getSnippet()),
                 $this->getRaceStatsDto($codeEntity->getId()),
                 $codeEntity->getCreationDate(),
+                $codeEntity->getId(),
                 $codeEntity->getDescription()
+                
             );
         }
-        return new RaceDataDto(
-            "None",
-            "None",
-            "None",
-            0,
-            $this->codeMapper->parseCodeSnippet("None"),
-            "None",
-            array(),
-            "None"
-        );
+        return null;
+        
     }
 }

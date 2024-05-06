@@ -86,17 +86,18 @@ abstract class Entity {
     }
 
     public function insertData($data){
+
         try {
             $columns = implode(', ', array_keys($data));
             $placeholders = ':' . implode(', :', array_keys($data));
-
+    
             $sql = "INSERT INTO $this->tableName ($columns) VALUES ($placeholders)";
             $stmt = $this->dbc->prepare($sql);
-
+    
             foreach ($data as $key => $value) {
                 $stmt->bindValue(':' . $key, $value);
             }
-
+    
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
@@ -136,10 +137,16 @@ abstract class Entity {
                 throw new InvalidArgumentException("Invalid order parameter.");
             }
             
-            $sql = "SELECT * FROM $this->tableName WHERE $fieldName = :value ORDER BY $orderFieldName $order";
-            $sql = ($amount !== null) ? $sql .  " LIMIT :amount" : $sql;
+            $sql = "SELECT * FROM $this->tableName";
+            if ($fieldName !== null) {
+                $sql .= " WHERE $fieldName = :value";
+            }
+            $sql .= " ORDER BY $orderFieldName $order";
+            $sql = ($amount !== null) ? $sql . " LIMIT :amount" : $sql;
             $stmt = $this->dbc->prepare($sql);
-            $stmt->bindParam(':value', $value);
+            if ($fieldName !== null) {
+                $stmt->bindParam(':value', $value);
+            }
             $stmt->bindParam(':amount', $amount, PDO::PARAM_INT);
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -155,6 +162,7 @@ abstract class Entity {
             return array();
         }
     }
+    
 
     public function updateData($id, $data){
         try {
