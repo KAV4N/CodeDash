@@ -16,8 +16,7 @@
                     </ul>
                     <div class="tab-content mt-3">
                         <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                            <form id="loginForm" method="post" action="../public/index.php">
-                                <input type="hidden" name="section" value="auth">
+                            <form id="loginForm" method="post" action="../public/index.php?section=auth">
                                 <input type="hidden" name="action" value="login">
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
@@ -31,8 +30,7 @@
                             </form>
                         </div>
                         <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
-                            <form id="signupForm" method="post" action="../public/index.php">
-                                <input type="hidden" name="section" value="auth">
+                            <form id="signupForm" method="post" action="../public/index.php?section=auth">
                                 <input type="hidden" name="action" value="register">
                                 <div class="mb-3">
                                     <label for="newEmail" class="form-label">Email</label>

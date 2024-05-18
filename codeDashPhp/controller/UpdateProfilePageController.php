@@ -61,6 +61,19 @@ class UpdateProfilePageController extends Controller {
         $template->view('update-profile');
     }
     
+    public function deleteAction() {
+        $template = new Template('default');
+
+        $userId = $_SESSION['user_id'];
+        if ($this->accountService->deleteAccountData($userId)) {
+            session_destroy();
+            header("Location: ../public/index.php");
+            exit();
+        } else {
+            $template->addAttribute("error", "Failed to delete the account. Please try again.");
+            $template->view("update-profile");
+        }
+    }
 
     public function defaultAction() {
         $template = new Template('default');

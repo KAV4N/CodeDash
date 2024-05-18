@@ -189,11 +189,25 @@ abstract class Entity {
         }
     }
     
-    public function selectAllEntities() {
+    private function orderBy($sql, $orderBy, $orderType="ASC", $limit=null) {
+        if (!empty($orderBy)) {
+            $sql .= " ORDER BY $orderBy $orderType";
+        }
+        if (!empty($limit)) {
+            $sql .= " LIMIT $limit";
+        }
+    
+        return $sql;
+    }
+    
+
+    public function selectAllEntities($orderBy=null, $orderType="ASC") {
         try {
             $entities = [];
     
             $sql = "SELECT * FROM $this->tableName";
+            $sql = $this->orderBy($sql, $orderBy, $orderType);
+            
             $stmt = $this->dbc->prepare($sql);
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -209,6 +223,18 @@ abstract class Entity {
             return array();
         }
     }
-        
+
+    public function deleteData($id) {
+        try {
+            $sql = "DELETE FROM $this->tableName WHERE id = :id";
+            $stmt = $this->dbc->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+      
 
 }

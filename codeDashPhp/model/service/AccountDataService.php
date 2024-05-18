@@ -5,10 +5,13 @@ require_once ROOT_PATH . "model/dto/AccountDataDto.php";
 
 
 class AccountDataService{
-    private PDO $dbc;
+    private $dbc;
 
-    public function __construct(PDO $dbc){
+    private $playerRepository;
+
+    public function __construct($dbc){
         $this->dbc = $dbc;
+        $this->playerRepository = new PlayerEntity($this->dbc); 
     }
 
     public function updateAccountData($data){
@@ -25,10 +28,14 @@ class AccountDataService{
         return null;
     }
 
+    public function deleteAccountData($id){
+        return $this->playerRepository->deleteData($id);
+
+    }
+
     public function getAccountData(){
         $playerEntity = new PlayerEntity($this->dbc);
         $playerEntity->populateData($_SESSION["user_id"]);
-
 
         if ($playerEntity->getId()){
             return new AccountDataDto(

@@ -1,9 +1,9 @@
+
 <main class="mb-auto container-xxl bd-gutter my-5" id="main-container">
     <section class="d-flex flex-column rounded-3 gap-1">
         <div class="p-3 shadow-lg rounded-3 bg-body-tertiary text-light align-items-center justify-content-center">
             <h2>Player Profile Settings</h2>
-            <form action="" method="POST">
-                <input type="hidden" name="section" value="update-profile">
+            <form action="../public/index.php?section=update-profile" method="POST" id="profile-form">
                 <input type="hidden" name="action" value="save">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
@@ -17,7 +17,6 @@
                     <div class="input-group">
                         <p class="form-control rounded" id="email" name="email"><?php echo $this->attributes["email"]; ?></p>
                     </div>
-                    
                 </div>
                 <hr>
                 <div class="mb-3 justify-content-between d-flex">
@@ -44,8 +43,11 @@
                     <label for="about-me" class="form-label">About Me</label>
                     <textarea class="form-control" id="about-me" name="aboutme" maxlength="250"><?php echo $this->attributes["aboutme"]; ?></textarea>
                 </div>
-
-                <button type="submit" class="btn btn-primary">Save Changes</button>
+                
+                <div class="d-flex justify-content-between align-items-center">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Profile</button>
+                </div>
             </form>
             <p class="text-danger"><?php echo $this->attributes["error"]; ?></p>
             <p class="text-success"><?php echo $this->attributes["success"]; ?></p>
@@ -53,13 +55,20 @@
     </section>
 </main>
 
+<!-- Delete Confirmation Modal -->
+
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+
 <script>
     document.getElementById('change-password-btn').addEventListener('click', function() {
         var passwordFields = document.getElementById('password-fields');
-        var currentPassword = document.getElementById('current-password').value
-        var newPassword = document.getElementById('new-password').value
-        var confirmPassword = document.getElementById('confirm-password').value
-
+        var currentPassword = document.getElementById('current-password').value;
+        var newPassword = document.getElementById('new-password').value;
+        var confirmPassword = document.getElementById('confirm-password').value;
 
         if (newPassword !== '' || confirmPassword !== '' || currentPassword !== '') {
             return;
@@ -67,5 +76,4 @@
         passwordFields.style.display = passwordFields.style.display === 'none' ? 'block' : 'none';
     });
 </script>
-
 

@@ -23,7 +23,7 @@ class ProfilePageController extends Controller{
         $accuracy = ($data->typed == 0) ? 0 : (1 - ($data->errors / $data->typed)) * 100;
         $accuracy = number_format($accuracy, 2);
 
-        $expPercentage = ($data->exp / ($data->maxExp == 0 ? 1 : $data->maxExp)) * 100;
+        $expPercentage = ceil(($data->exp / ($data->maxExp == 0 ? 1 : $data->maxExp)) * 100);
 
         $template->addAttribute("username", $data->username);
         $template->addAttribute("aboutme", $data->aboutme);

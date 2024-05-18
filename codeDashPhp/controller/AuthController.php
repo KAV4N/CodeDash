@@ -47,6 +47,7 @@ class AuthController extends Controller {
             $template->view('index');
         }else{
             $template = new Template('default');
+
             $template->view('auth');
         }
     }

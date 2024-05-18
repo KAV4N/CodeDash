@@ -10,7 +10,7 @@ class Auth {
         $userObj = new PlayerEntity($dbc);
         $userObj->populateDataByFieldName("email", $email);
         
-        if($userObj->getId() != null && password_verify( $password , $userObj->getPassword())){
+        if($userObj->getId() != null && password_verify( $password , $userObj->getPassword()) && $userObj->getBanned() === 0){
             $_SESSION["user_id"] = $userObj->getId();
             $_SESSION["is_admin"] = $userObj->getRole();
             return true;

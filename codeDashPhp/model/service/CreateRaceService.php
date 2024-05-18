@@ -5,19 +5,20 @@ require_once ROOT_PATH . "model/entity/DifficultyEntity.php";
 require_once ROOT_PATH . "model/entity/ProgrammingLanguageEntity.php";
 
 class CreateRaceService{
-    private PDO $dbc;
-    private $difficultyEntity;
-    private $languageEntity;
+    private $dbc;
+    private $difficultyRepository;
+    private $languageRepository;
+    private $codeRepository;
 
-    public function __construct(PDO $dbc){
+    public function __construct($dbc){
         $this->dbc = $dbc;
-        $this->difficultyEntity = new DifficultyEntity($this->dbc);
-        $this->languageEntity = new ProgrammingLanguageEntity($this->dbc);
+        $this->difficultyRepository = new DifficultyEntity($this->dbc);
+        $this->languageRepository = new ProgrammingLanguageEntity($this->dbc);
+        $this->codeRepository = new CodeEntity($this->dbc);
     }
 
     public function createRace($data){
-        $codeEntity = new CodeEntity($this->dbc);
-        $codeEntity->insertData($data);
+        $this->codeRepository->insertData($data);
     }
 
     private function extractDifficulty($data) {
@@ -37,19 +38,25 @@ class CreateRaceService{
     }
 
     public function getDiffId($name){
-        $this->difficultyEntity->populateDataByFieldName("name",$name);
-        return $this->difficultyEntity->getId();
+        $difficultyEntity = new DifficultyEntity($this->dbc);
+        if ($difficultyEntity->populateDataByFieldName("name",$name)){
+            return $difficultyEntity->getId();
+        }
+        return null;
     }
     public function getLangId($lang){
-        $this->languageEntity->populateDataByFieldName("language_name",$lang);
-        return $this->languageEntity->getId();
+        $languageEntity = new ProgrammingLanguageEntity($this->dbc);
+        if ($languageEntity->populateDataByFieldName("language_name",$lang)){
+            return $languageEntity->getId();
+        }
+        return null;
     }
 
     public function getRaceData(){
 
 
-        $allDiff = $this->difficultyEntity->selectAllEntities();
-        $allLang = $this->languageEntity->selectAllEntities();
+        $allDiff = $this->difficultyRepository->selectAllEntities();
+        $allLang = $this->languageRepository->selectAllEntities();
         
         return new RaceStatsDto(
                 $this->extractLanguage($allLang),

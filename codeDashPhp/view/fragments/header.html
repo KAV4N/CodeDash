@@ -34,16 +34,15 @@ function active($current_value){
         <hr class="solid">
         <div>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li>
-              <form class="d-flex" role="search">
-                <input class="form-control me-sm-2  text-light" type="search" placeholder="Search player" aria-label="Search">
-              </form>
-            </li>
+
             <hr class="solid">
             <li>
               <?php
                 if(isset($_SESSION['user_id'])) {
-                  print_r($_SESSION);
+                  if (isset($_SESSION["is_admin"]) && $_SESSION["is_admin"] === 1){
+                    echo '<a class="btn btn-outline-success my-2 my-sm-0 me-2" href="../public/index.php?section=bugReportDashboard">BugReports</a>';
+                    echo '<a class="btn btn-outline-success my-2 my-sm-0 me-2" href="../public/index.php?section=playersDashboard">Players</a>';
+                  }
                   echo '<a class="btn btn-outline-light my-2 my-sm-0" href="../public/index.php?section=profile" style="width: 100px;">Profile</a>';
                 } else {
                   echo '<a class="btn btn-outline-light my-2 my-sm-0" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" style="width: 100px;">Log In</a>';

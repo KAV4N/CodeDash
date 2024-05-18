@@ -72,7 +72,7 @@ class Router extends Entity {
     public function switchPage($action){
         $controllerFile =  ROOT_PATH .'controller/' . $this->fields["module"]. 'Controller.php';
         $controllerClassName = $this->fields["module"] . 'Controller';
-        //echo $controllerClassName;
+
         if ($this->fields["id"] != null && file_exists($controllerFile)) {
             include $controllerFile;
             $controller = new $controllerClassName();

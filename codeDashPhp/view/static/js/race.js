@@ -92,7 +92,7 @@ const mainContainer = document.getElementById("main-container");
 const countNumbers = ["3","2","1","Go!"];
 let countdownTime = 0;
 
-countdownDuration = 3;
+//countdownDuration = 3;
 function startCountdown() {
     countdownInterval = setInterval(() => {
         if (countdownDuration <= 0) {

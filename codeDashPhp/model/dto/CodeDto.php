@@ -2,10 +2,10 @@
 
 
 class CodeDto{
-    public string $id;
-    public string $character;
+    public $id;
+    public  $character;
 
-    public function __construct(string $id, string $character) {
+    public function __construct($id, $character) {
         $this->id = $id;
         $this->character = $character;
     }

@@ -9,29 +9,21 @@ require_once ROOT_PATH . "model/entity/RaceStatsEntity.php";
 
 class CodeService{
 
-    private CodeMapper $codeMapper;
-    private PDO $dbc;
+    private $codeMapper;
+    private $dbc;
 
-    /*
-    private $codeEntity;
-    private $difficultyEntity;
-    private $playerEntity;
-    private $raceEntity;
-    private $programmingLanguageEntity;
-    private $raceStatsEntity;
-    private $rankEntity;
-    */
+    private $raceStatsRepository;
 
-    public function __construct(CodeMapper $codeMapper, PDO $dbc){
+    public function __construct($codeMapper, $dbc){
         $this->codeMapper = $codeMapper;
         $this->dbc = $dbc;
+        $this->raceStatsRepository = new RaceStatsEntity($this->dbc);
     }
 
 
     private function getRaceStatsDto($id) {
         $dtos = [];
-        $raceStatsEntity = new RaceStatsEntity($this->dbc);
-        $raceStats = $raceStatsEntity->getTopEntitiesByColumnValue("code_id", $id,"play_date","DESC",10);
+        $raceStats = $this->raceStatsRepository ->getTopEntitiesByColumnValue("code_id", $id,"play_date","DESC",10);
 
         foreach ($raceStats as $entity) {
             $dto = new RaceStatsDto(
@@ -51,7 +43,6 @@ class CodeService{
     public function getRandomCodeDto(){
         $codeEntity = new CodeEntity($this->dbc);
         $codeEntity->populateRandomData();
-
 
         if ($codeEntity->getId()){
             return new RaceDataDto(

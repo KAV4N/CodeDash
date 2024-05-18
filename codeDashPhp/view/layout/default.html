@@ -28,6 +28,13 @@
     
     </div>
     <?php include VIEW_PATH . "fragments/login.html" ?>
+
+    <?php 
+    if (isset($_GET["section"]) && $_GET["section"] === "update-profile"){
+        include VIEW_PATH . "fragments/delete-modal.html" ;
+    }
+    ?>
+
     <?php include VIEW_PATH . "fragments/bug-report.html" ?>
 
     <div id="alertContainer" class="position-fixed bottom-0 start-0 end-0 p-3 w-100" style="z-index: 11">
@@ -42,7 +49,6 @@
 <script src="../view/static/js/reveal-animation.js"></script>
 <!-- <script src="../view/static/js/bg-glow.js"></script> -->
 <script src="../view/static/js/navbar-color-change.js"></script>
-
 
 </body>
 </html>
