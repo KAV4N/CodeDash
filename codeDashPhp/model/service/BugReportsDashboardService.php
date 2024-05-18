@@ -17,7 +17,7 @@ class BugReportsDashboardService{
 
     public function getBugReports(){
         $dtos = [];
-        $bugEntities = $this->bugRepository->selectAllEntities();
+        $bugEntities = $this->bugRepository->selectAllEntities("added", "DESC");
         foreach ($bugEntities as $entity) {
             $dto = new BugReportDto(
                 $entity->getId(),
