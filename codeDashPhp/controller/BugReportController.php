@@ -1,6 +1,13 @@
 <?php
+namespace Controllers;
 
 include ROOT_PATH . 'model/service/BugReportService.php';
+
+use Src\Controller;
+use Model\Service\BugReportService;
+use Src\DatabaseConnection;
+use Src\Template;
+
 
 class BugReportController extends Controller{
 

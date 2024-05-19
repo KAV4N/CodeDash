@@ -1,6 +1,17 @@
 <?php
+
+namespace Controllers;
+
+
 include ROOT_PATH . 'model/service/AccountDataService.php';
 require_once ROOT_PATH . "src/ValidationController.php";
+
+use Src\Controller;
+use Model\Service\AccountDataService;
+use Src\ValidationController;
+use Src\DatabaseConnection;
+use Src\Template;
+
 
 class UpdateProfilePageController extends Controller {
     private $accountService;

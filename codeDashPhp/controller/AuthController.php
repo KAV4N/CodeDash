@@ -1,4 +1,9 @@
 <?php
+namespace Controllers;
+
+use Src\Controller;
+use Src\Auth;
+use Src\Template;
 
 class AuthController extends Controller {
     

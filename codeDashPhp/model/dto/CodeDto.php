@@ -1,5 +1,5 @@
 <?php
-
+namespace Model\Dto;
 
 class CodeDto{
     public $id;

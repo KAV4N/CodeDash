@@ -1,5 +1,15 @@
 <?php
+namespace Controllers;
+
 include ROOT_PATH . 'model/service/CreateRaceService.php';
+
+use Src\Controller;
+use Model\Service\CreateRaceService;
+use Src\DatabaseConnection;
+use Src\Template;
+
+
+
 
 class CreateRacePageController extends Controller{
     private $createRaceService;

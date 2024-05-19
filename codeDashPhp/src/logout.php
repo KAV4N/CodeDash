@@ -1,4 +1,6 @@
 <?php
+namespace Src;
+
 //test for log out user
 session_start();
 $_SESSION = array();

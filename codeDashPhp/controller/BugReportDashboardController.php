@@ -1,4 +1,11 @@
 <?php
+namespace Controllers;
+
+use Src\Controller;
+use Model\Service\BugReportsDashboardService;
+use Src\DatabaseConnection;
+use Src\Template;
+
 include ROOT_PATH . 'model/service/BugReportsDashboardService.php';
 
 class BugReportDashboardController extends Controller {

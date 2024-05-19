@@ -1,7 +1,13 @@
 <?php
 
+namespace Model\Mapper;
+
 require_once ROOT_PATH . "src/TupleLineCode.php";
 require_once ROOT_PATH . "model/dto/CodeDto.php";
+
+use Src\TupleLineCode;
+use Model\Dto\CodeDto;
+
 
 class CodeMapper {
 

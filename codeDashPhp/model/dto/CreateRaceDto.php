@@ -1,6 +1,6 @@
 <?php
-
-class RaceStatsDto {
+namespace Model\Dto;
+class CreateRaceDto {
     public $language;
     public $difficulty;
     public $snippet;

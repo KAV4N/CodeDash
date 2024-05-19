@@ -1,4 +1,7 @@
 <?php
+
+namespace Src;
+
 define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR);
 define('VIEW_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR);
 
@@ -8,6 +11,14 @@ require_once '../model/entity/RaceStatsEntity.php';
 require_once '../model/entity/PlayerEntity.php';
 require_once '../model/entity/DifficultyEntity.php';
 require_once '../model/entity/RankEntity.php';
+
+
+use Model\Entity\RaceStatsEntity;
+use Model\Entity\DifficultyEntity;
+use Model\Entity\RankEntity;
+use Model\Entity\PlayerEntity;
+use Src\DatabaseConnection;
+
 
 session_start();
 

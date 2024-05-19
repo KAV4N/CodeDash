@@ -13,6 +13,12 @@ require_once ROOT_PATH . 'src/DatabaseConnection.php';
 require_once ROOT_PATH . "src/Auth.php";
 require_once ROOT_PATH . "src/Router.php";
 require_once ROOT_PATH . "src/databaseConfig.php";
+
+
+use Src\DatabaseConnection;
+use Src\Router;
+
+
 /*
 require_once ROOT_PATH . "model/entity/CodeEntity.php";
 require_once ROOT_PATH . "model/entity/DifficultyEntity.php";

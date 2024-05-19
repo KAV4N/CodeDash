@@ -1,4 +1,7 @@
 <?php
+
+namespace Src;
+
 class TupleLineCode {
     public $lineNumbers;
     public $codeSnippet;

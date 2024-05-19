@@ -1,5 +1,5 @@
 <?php
-
+namespace Src;
 class Controller {
 
     public function runAction($actionName) {

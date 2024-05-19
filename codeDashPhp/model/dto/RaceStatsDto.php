@@ -1,5 +1,7 @@
 <?php
 
+namespace Model\Dto;
+
 class RaceStatsDto {
     public $language;
     public $difficulty;

@@ -1,5 +1,11 @@
 <?php
+
+namespace Model\Service;
+
 require_once ROOT_PATH . "model/entity/BugReportEntity.php";
+
+use Model\Entity\BugReportEntity;
+
 
 class BugReportService{
     private $dbc;

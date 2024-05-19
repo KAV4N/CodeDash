@@ -1,5 +1,12 @@
 <?php
 
+
+namespace Src;
+
+use PDOException;
+use PDO;
+use InvalidArgumentException;
+
 abstract class Entity {
     
     protected $dbc;

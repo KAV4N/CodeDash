@@ -1,10 +1,16 @@
 <?php
+namespace Model\Service;
+
+
 require_once ROOT_PATH . "model/dto/RaceDataDto.php";
 require_once ROOT_PATH . "model/dto/RaceStatsDto.php";
 require_once ROOT_PATH . "model/entity/CodeEntity.php";
 require_once ROOT_PATH . "model/entity/RaceStatsEntity.php";
 
-
+use Model\Dto\RaceDataDto;
+use Model\Dto\RaceStatsDto;
+use Model\Entity\CodeEntity;
+use Model\Entity\RaceStatsEntity;
 
 
 class CodeService{

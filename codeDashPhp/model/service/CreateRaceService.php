@@ -1,8 +1,19 @@
 <?php
+
+namespace Model\Service;
+
+
 require_once ROOT_PATH . "model/dto/CreateRaceDto.php";
 require_once ROOT_PATH . "model/entity/CodeEntity.php";
 require_once ROOT_PATH . "model/entity/DifficultyEntity.php";
 require_once ROOT_PATH . "model/entity/ProgrammingLanguageEntity.php";
+
+use Model\Entity\DifficultyEntity;
+use Model\Entity\ProgrammingLanguageEntity;
+use Model\Entity\CodeEntity;
+use Model\Dto\CreateRaceDto;
+
+
 
 class CreateRaceService{
     private $dbc;
@@ -58,7 +69,7 @@ class CreateRaceService{
         $allDiff = $this->difficultyRepository->selectAllEntities();
         $allLang = $this->languageRepository->selectAllEntities();
         
-        return new RaceStatsDto(
+        return new CreateRaceDto(
                 $this->extractLanguage($allLang),
                 $this->extractDifficulty($allDiff)
         );   

@@ -1,5 +1,7 @@
 <?php
 
+namespace Src;
+
 class Template {
     private $layout;
     private $attributes = [];

@@ -1,5 +1,15 @@
 <?php
+
+namespace Controllers;
+
 include ROOT_PATH . 'model/service/PlayerService.php';
+
+use Src\Controller;
+use Model\Service\PlayerService;
+use Src\DatabaseConnection;
+use Src\Template;
+
+
 
 class ProfilePageController extends Controller{
     private $playerService;

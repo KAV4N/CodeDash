@@ -1,5 +1,7 @@
 <?php
 
+namespace Model\Dto;
+
 class   LeaderboardDto {
     public $playerName;
     public $rank;
