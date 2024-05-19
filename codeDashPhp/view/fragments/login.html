@@ -46,6 +46,10 @@
                                 <label for="newPassword" class="form-label">New Password</label>
                                 <input type="password" name="password" class="form-control" id="newPassword" placeholder="Enter your new password" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+                            </div>
                             <div class="form-check mb-3">
                                 <input type="checkbox" class="form-check-input" id="consentCheckbox" required>
                                 <label class="form-check-label" for="consentCheckbox">
@@ -62,7 +66,7 @@
                     <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
                     <div class="g-signin2" data-onsuccess="onSignIn" style="width: 300px;"></div>
                 </div> -->
-                <p class="text-danger"><?php if (isset($this->attributes["error"])){ echo $this->attributes["error"]; }?></p>
+
             </div>
         </div>
     </div>

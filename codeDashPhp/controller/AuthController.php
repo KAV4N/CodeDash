@@ -35,19 +35,20 @@ class AuthController extends Controller {
         
         $username = $_POST['username'] ?? '';
         $password = $_POST['password'] ?? '';
+        $confirmPassword = $_POST['confirmPassword'] ?? '';
         $auth = new Auth();
-        $suc = $auth->registerUser($email, $username, $password);
+        $suc = $auth->registerUser($email, $username, $password, $confirmPassword);
         $this->switchContent($suc);
          
     }
 
     private function switchContent($suc){
-        if ($suc){
+        if (empty($suc)){
             $template = new Template('default');
             $template->view('index');
         }else{
             $template = new Template('default');
-
+            $template->addAttribute("error", $suc);
             $template->view('auth');
         }
     }
