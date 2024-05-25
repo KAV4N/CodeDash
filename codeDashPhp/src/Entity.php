@@ -93,9 +93,9 @@ abstract class Entity {
     }
 
     public function getEntitiesByColumnValue($fieldName, $value) {
+        $entities = [];
         try {
-            $entities = [];
-
+            
             $sql = "SELECT * FROM $this->tableName WHERE $fieldName = :value";
             $stmt = $this->dbc->prepare($sql);
             $stmt->bindParam(':value', $value);
@@ -110,13 +110,14 @@ abstract class Entity {
 
             return $entities;
         } catch (PDOException $e) {
-            return array();
+            return $entities;
         }
     }
 
     public function getTopEntitiesByColumnValue($fieldName, $value, $orderFieldName, $order = 'ASC', $amount = null) {
+        $entities = [];
         try {
-            $entities = [];
+            
 
             $order = strtoupper($order);
             if ($order !== 'ASC' && $order !== 'DESC') {
@@ -150,11 +151,12 @@ abstract class Entity {
 
             return $entities;
         } catch (PDOException $e) {
-            return array();
+            return $entities;
         }
     }
 
     public function updateData($id, $data) {
+       
         try {
             $setValues = [];
             foreach ($data as $key => $value) {
@@ -190,8 +192,8 @@ abstract class Entity {
     }
 
     public function selectAllEntities($orderBy = null, $orderType = "ASC") {
+        $entities = [];
         try {
-            $entities = [];
 
             $sql = "SELECT * FROM $this->tableName";
             $sql = $this->orderBy($sql, $orderBy, $orderType);
@@ -208,7 +210,7 @@ abstract class Entity {
 
             return $entities;
         } catch (PDOException $e) {
-            return array();
+            return $entities;
         }
     }
 

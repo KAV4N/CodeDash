@@ -2,8 +2,11 @@
 
 namespace Controllers;
 
-include ROOT_PATH . 'model/service/CodeService.php';
-include ROOT_PATH . 'model/mapper/CodeMapper.php';
+require_once "../src/Controller.php";
+require_once "../src/Template.php";
+require_once "../src/DatabaseConnection.php";
+require_once ROOT_PATH . 'model/service/CodeService.php';
+require_once ROOT_PATH . 'model/mapper/CodeMapper.php';
 
 use Src\Controller;
 use Model\Service\CodeService;

@@ -20,7 +20,7 @@
             <h2 class="fw-bold mb-5">Get <span class="text-primary ">Involved</span></h2>
             <p>As an open-source project, CodeDash thrives on the support of its community. If you're enthusiastic
                 about enhancing the game or adding new features, we invite you to contribute to the project.
-                Check out our <a href="https://github.com/your-github-repository" target="_blank">GitHub repository</a>
+                Check out our <a href="https://github.com/KAV4N/CodeDash" target="_blank">GitHub repository</a>
                 to get started.
             </p>
         </div>

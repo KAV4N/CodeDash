@@ -20,22 +20,22 @@
     </div>
     <div id="wrapper-inside" class ="container-fluid overflow-x-hidden overflow-y-auto p-0 m-0 h-100 d-flex flex-column" style="position: fixed;top:0;left:0; z-index:3; scrollbar-width: thin;">
         
-        <?php include VIEW_PATH . "fragments/header.html" ?>
+        <?php include VIEW_PATH . "fragments/header.php" ?>
 
-        <?php include VIEW_PATH . $template . ".html"; ?>
+        <?php include VIEW_PATH . $template . ".php"; ?>
 
-        <?php include VIEW_PATH . "fragments/footer.html" ?>
+        <?php include VIEW_PATH . "fragments/footer.php" ?>
     
     </div>
-    <?php include VIEW_PATH . "fragments/login.html" ?>
+    <?php include VIEW_PATH . "fragments/login.php" ?>
 
     <?php 
     if (isset($_GET["section"]) && $_GET["section"] === "update-profile"){
-        include VIEW_PATH . "fragments/delete-modal.html" ;
+        include VIEW_PATH . "fragments/delete-modal.php" ;
     }
     ?>
 
-    <?php include VIEW_PATH . "fragments/bug-report.html" ?>
+    <?php include VIEW_PATH . "fragments/bug-report.php" ?>
 
     <div id="alertContainer" class="position-fixed bottom-0 start-0 end-0 p-3 w-100" style="z-index: 11">
         <div id="customAlert" class="d-none alert alert-success alert-dismissible fade show" role="alert">

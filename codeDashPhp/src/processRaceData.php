@@ -64,9 +64,9 @@ class ProcessRaceData {
         $rankMaxExp = $playerEntity->getRank()->getExp();
 
         $updatedExp = $playerExp + $diffExp;
-        $updatedRankStats = array(
+        $updatedRankStats = [
             "exp" => $updatedExp
-        );
+        ];
 
         if ($updatedExp >= $rankMaxExp) {
             $lastRankEntity = $rankEntity->getTopEntitiesByColumnValue(null, null, "id", "DESC", 1)[0];

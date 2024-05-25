@@ -1,9 +1,9 @@
 <?php
 namespace Src;
 
-$config = array(
+$config = [
     'host' => 'localhost',
     'dbname' => 'codedash_db',
     'username' => 'root',
     'password' => ''
-);
+];

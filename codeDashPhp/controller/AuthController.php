@@ -1,6 +1,10 @@
 <?php
 namespace Controllers;
 
+require_once "../src/Controller.php";
+require_once "../src/Template.php";
+require_once "../src/Auth.php";
+
 use Src\Controller;
 use Src\Auth;
 use Src\Template;

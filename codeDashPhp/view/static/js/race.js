@@ -321,17 +321,11 @@ function fetchData(data){
     $.ajax({
         type: "POST",
         url: "../src/processRaceData.php",
-        data: {raceData : jsonString}, 
-        cache: false,
-        success: function(response) {
-            console.log("AJAX request successful:", response);
-        },
-        error: function(xhr, status, error) {
-            console.error("AJAX request failed:", status, error);
-        }
+        data: { raceData: jsonString },
+        cache: false
     });
-    console.log("Data fetched.");
 }
+
 
 
 startGame();

@@ -15,6 +15,6 @@ class Template {
     }
 
     function view($template){        
-        include VIEW_PATH . 'layout/' . $this->layout .  '.html';  
+        include VIEW_PATH . 'layout/' . $this->layout .  '.php';  
     }
 }

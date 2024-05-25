@@ -2,7 +2,11 @@
 
 namespace Controllers;
 
-include ROOT_PATH . 'model/service/PlayerService.php';
+
+require_once "../src/Controller.php";
+require_once "../src/Template.php";
+require_once "../src/DatabaseConnection.php";
+require_once ROOT_PATH . 'model/service/PlayerService.php';
 
 use Src\Controller;
 use Model\Service\PlayerService;

@@ -19,17 +19,6 @@ use Src\DatabaseConnection;
 use Src\Router;
 
 
-/*
-require_once ROOT_PATH . "model/entity/CodeEntity.php";
-require_once ROOT_PATH . "model/entity/DifficultyEntity.php";
-require_once ROOT_PATH . "model/entity/PlayerEntity.php";
-require_once ROOT_PATH . "model/entity/ProgrammingLanguageEntity.php";
-require_once ROOT_PATH . "model/entity/RaceStatsEntity.php";
-require_once ROOT_PATH . "model/entity/RankEntity.php";
-*/
-
-
-
 DatabaseConnection::connect($config["host"],$config["dbname"], $config["username"],$config["password"]);
 $dbc = DatabaseConnection::getConnection();
 

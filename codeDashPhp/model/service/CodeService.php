@@ -29,7 +29,7 @@ class CodeService{
 
     private function getRaceStatsDto($id) {
         $dtos = [];
-        $raceStats = $this->raceStatsRepository ->getTopEntitiesByColumnValue("code_id", $id,"play_date","DESC",10);
+        $raceStats = $this->raceStatsRepository ->getTopEntitiesByColumnValue("code_id", $id,"play_date","DESC",50);
 
         foreach ($raceStats as $entity) {
             $dto = new RaceStatsDto(

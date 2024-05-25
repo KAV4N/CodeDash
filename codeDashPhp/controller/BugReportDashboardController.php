@@ -1,12 +1,17 @@
 <?php
 namespace Controllers;
 
+require_once "../src/Controller.php";
+require_once "../src/Template.php";
+require_once "../src/DatabaseConnection.php";
+require_once ROOT_PATH . 'model/service/BugReportsDashboardService.php';
+
+
 use Src\Controller;
 use Model\Service\BugReportsDashboardService;
 use Src\DatabaseConnection;
 use Src\Template;
 
-include ROOT_PATH . 'model/service/BugReportsDashboardService.php';
 
 class BugReportDashboardController extends Controller {
 

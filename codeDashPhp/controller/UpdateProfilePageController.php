@@ -2,8 +2,11 @@
 
 namespace Controllers;
 
+require_once "../src/Controller.php";
+require_once "../src/Template.php";
+require_once "../src/DatabaseConnection.php";
 
-include ROOT_PATH . 'model/service/AccountDataService.php';
+require_once ROOT_PATH . 'model/service/AccountDataService.php';
 require_once ROOT_PATH . "src/ValidationController.php";
 
 use Src\Controller;
@@ -42,10 +45,10 @@ class UpdateProfilePageController extends Controller {
         $acData = $this->accountService->getAccountData();
         $playerPassword = $acData->password; 
 
-        $data = array(
+        $data = [
             'username' => $newUsername,
             'aboutme' => $newAboutMe
-        );
+        ];
         
         $isNewPass = $this->validationController->isNewPassword($currentPassword,$confirmPassword, $newPassword);
         if ($isNewPass){
