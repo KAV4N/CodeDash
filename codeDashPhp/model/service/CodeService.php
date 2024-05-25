@@ -1,10 +1,16 @@
 <?php
+namespace Model\Service;
+
+
 require_once ROOT_PATH . "model/dto/RaceDataDto.php";
 require_once ROOT_PATH . "model/dto/RaceStatsDto.php";
 require_once ROOT_PATH . "model/entity/CodeEntity.php";
 require_once ROOT_PATH . "model/entity/RaceStatsEntity.php";
 
-
+use Model\Dto\RaceDataDto;
+use Model\Dto\RaceStatsDto;
+use Model\Entity\CodeEntity;
+use Model\Entity\RaceStatsEntity;
 
 
 class CodeService{
@@ -23,7 +29,7 @@ class CodeService{
 
     private function getRaceStatsDto($id) {
         $dtos = [];
-        $raceStats = $this->raceStatsRepository ->getTopEntitiesByColumnValue("code_id", $id,"play_date","DESC",10);
+        $raceStats = $this->raceStatsRepository ->getTopEntitiesByColumnValue("code_id", $id,"play_date","DESC",50);
 
         foreach ($raceStats as $entity) {
             $dto = new RaceStatsDto(

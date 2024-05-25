@@ -1,5 +1,7 @@
 <?php
-require_once ROOT_PATH . "src/TupleLineCode.php";
+
+namespace Model\Dto;
+
 
 class RaceDataDto {
     
@@ -17,11 +19,11 @@ class RaceDataDto {
     public $codeId;
 
     public function __construct(
-        string $creatorName,
-        string $difficulty,
-        string $programmingLanguage,
-        int $time,
-        TupleLineCode $lineCode,
+        $creatorName,
+        $difficulty,
+        $programmingLanguage,
+        $time,
+        $lineCode,
         $raceStats,
         $createdAt,
         $codeId,

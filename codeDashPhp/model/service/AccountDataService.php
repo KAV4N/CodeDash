@@ -1,7 +1,14 @@
 <?php
+
+namespace Model\Service;
+
+
+
 require_once ROOT_PATH . "model/dto/AccountDataDto.php";
+require_once ROOT_PATH . "model/entity/PlayerEntity.php";
 
-
+use Model\Entity\PlayerEntity;
+use Model\Dto\AccountDataDto;
 
 
 class AccountDataService{

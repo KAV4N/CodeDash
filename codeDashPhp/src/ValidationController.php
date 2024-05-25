@@ -1,4 +1,7 @@
 <?php
+
+namespace Src;
+
 class ValidationController {
     private $minPasswordLen = 8;
     private $minUsernameLen = 3;

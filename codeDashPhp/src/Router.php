@@ -51,16 +51,17 @@ class Router{
     
 }*/
 
+namespace Src;
+
 require_once ROOT_PATH . "src/Entity.php";
 
 class Router extends Entity {
     
     public function __construct($dbc) {
         parent::__construct($dbc, 'tbl_routes');
-        
     }
+
     protected function initFields() {
-        
         $this->fields = [
             'id' => null,
             'module' => null,
@@ -68,18 +69,27 @@ class Router extends Entity {
         ];
     }
 
-
     public function switchPage($action){
-        $controllerFile =  ROOT_PATH .'controller/' . $this->fields["module"]. 'Controller.php';
-        $controllerClassName = $this->fields["module"] . 'Controller';
+        $controllerFile =  ROOT_PATH .'controller/' . $this->fields["module"] . 'Controller.php';
+        $controllerClassName = 'Controllers\\' . $this->fields["module"] . 'Controller';
 
         if ($this->fields["id"] != null && file_exists($controllerFile)) {
             include $controllerFile;
-            $controller = new $controllerClassName();
-            $controller->runAction($action);
+
+            if (class_exists($controllerClassName)) {
+                $controller = new $controllerClassName();
+                $controller->runAction($action);
+            } else {
+                $this->run404();
+            }
         } else {
-            $defaultController = new Controller();
-            $defaultController->runAction("404");
+            $this->run404();
         }
     }
+
+    private function run404() {
+        $defaultController = new Controller();
+        $defaultController->runAction("404");
+    }
 }
+

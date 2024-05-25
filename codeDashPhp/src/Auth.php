@@ -1,8 +1,15 @@
 <?php
 
+namespace Src;
+
 require_once ROOT_PATH . "model/entity/PlayerEntity.php";
 require_once ROOT_PATH . "model/entity/RankEntity.php";
 require_once ROOT_PATH . "src/ValidationController.php";
+
+use Model\Entity\PlayerEntity;
+use Model\Entity\RankEntity;
+use Src\ValidationController;
+
 
 class Auth {
 

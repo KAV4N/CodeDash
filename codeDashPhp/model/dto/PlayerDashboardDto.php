@@ -1,5 +1,7 @@
 <?php
 
+namespace Model\Dto;
+
 class PlayerDashboardDto {
     public $id;
     public $email;

@@ -1,5 +1,7 @@
 <?php
 
+namespace Model\Dto;
+
 class PlayerDto {
     public $username;
     public $exp;

@@ -1,8 +1,17 @@
 <?php
+namespace Model\Entity;
+
 require_once ROOT_PATH . "src/Entity.php";
 require_once ROOT_PATH . "model/entity/PlayerEntity.php";
 require_once ROOT_PATH . "model/entity/DifficultyEntity.php";
 require_once ROOT_PATH . "model/entity/ProgrammingLanguageEntity.php";
+
+
+use Src\Entity;
+use Model\Entity\DifficultyEntity;
+use Model\Entity\PlayerEntity;
+use Model\Entity\ProgrammingLanguageEntity;
+
 
 class CodeEntity extends Entity {
     

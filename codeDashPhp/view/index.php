@@ -11,7 +11,7 @@
             <div class="row pt-3 px-5">
               <div class="col">
                 <p class="lead">Compete, Learn, and Excel in Coding Challenges</p>
-                <a class="btn btn-primary btn-lg mt-3 w-100" href="../index.php?section=race">Start CodeDash!</a>
+                <a class="btn btn-primary btn-lg mt-3 w-100" href="../public/index.php?section=race">Start CodeDash!</a>
               </div>
             </div>
           </div>

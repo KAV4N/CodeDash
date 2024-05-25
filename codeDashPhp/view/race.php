@@ -64,7 +64,7 @@
                 </div>
                 <div class="d-flex flex-column flex-md-row flex-xl-row gap-1">
                     <div class="col shadow-lg bg-body-tertiary rounded-3  p-3" style="flex-grow: 2;">
-                        <div style="height: 250px;" class="d-flex flex-column  justify-content-between">
+                        <div style="height: 300px;" class="d-flex flex-column  justify-content-between">
                             <div class="custom-bg-darkblue rounded-3 w-100 text-center">
                                 <p id="total-words-typed" class="mx-3 my-1"><strong class="text-light">Typed:</strong> </p>
                                 <hr class="m-0 border-black">
@@ -84,31 +84,31 @@
                     </div>
 
                     <div class="col shadow-lg bg-body-tertiary rounded-3 p-3 justify-content-center align-items-center" style="flex-grow: 10;">
-						<div class="scrollable-table rounded-3 overflow-auto  custom-bg-darkblue" style="height: 250px;">
-							<table id="playerTable" class="m-0 table table-hover  table-striped display font-weight-bold w-100 text-center">
-								<thead>
-									<tr>
-										<th scope="col">Rank</th>
-										<th scope="col">Player</th>
-										<th scope="col">WPM</th>
-										<th scope="col">Time Left</th>
-										<th scope="col">Accuracy</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach ($this->attributes['raceStats'] as $index => $stats): ?>
-										<tr class="table-border-top">
-											<th scope="row"><?php echo $index + 1; ?></th>
-											<td><?php echo $stats->player; ?></td>
-											<td><?php echo $stats->wpm; ?></td>
-											<td><?php echo $stats->timeLeft; ?></td>
-											<td><?php echo $stats->accuracy; ?></td>
-										</tr>
-									<?php endforeach; ?>
-								</tbody>
-							</table>
-						</div>
-					</div>
+                        <h4 class="mb-3 text-start">Last 50 <span class="text-primary">Games</span></h4>
+                        <div class="scrollable-table rounded-3 overflow-auto custom-bg-darkblue" style="height: 250px;">
+                            <table id="playerTable" class="m-0 table table-hover table-striped display font-weight-bold w-100 text-center">
+                                <thead class="table-dark" >
+                                    <tr>
+                                        <th scope="col">Player</th>
+                                        <th scope="col">WPM</th>
+                                        <th scope="col">Time Left</th>
+                                        <th scope="col">Accuracy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($this->attributes['raceStats'] as $index => $stats): ?>
+                                        <tr class="table-border-top">
+                                            <td><?php echo $stats->player; ?></td>
+                                            <td><?php echo $stats->wpm; ?></td>
+                                            <td><?php echo $stats->timeLeft; ?></td>
+                                            <td><?php echo $stats->accuracy; ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
 					
                 </div>
             </div>

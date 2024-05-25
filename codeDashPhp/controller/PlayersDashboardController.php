@@ -1,5 +1,19 @@
 <?php
+
+namespace Controllers;
+
+
+require_once "../src/Controller.php";
+require_once "../src/Template.php";
+require_once "../src/DatabaseConnection.php";
 include ROOT_PATH . 'model/service/PlayersDashboardService.php';
+
+use Src\Controller;
+use Model\Service\PlayersDashboardService;
+use Src\DatabaseConnection;
+use Src\Template;
+
+
 
 class PlayersDashboardController extends Controller {
 

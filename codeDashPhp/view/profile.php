@@ -11,7 +11,6 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-2 d-flex align-items-center justify-content-between text-center">
-                        <!-- <img src="https://via.placeholder.com/150" class="img-fluid rounded" alt="User Image"> -->
                         <h5 class="my-2"><strong id="username"><?php echo $this->attributes["username"]; ?></strong></h5>
                     </div>
 

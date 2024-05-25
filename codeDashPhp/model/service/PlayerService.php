@@ -1,8 +1,19 @@
 <?php
+
+namespace Model\Service;
+
+
 require_once ROOT_PATH . "model/dto/PlayerDto.php";
 require_once ROOT_PATH . "model/dto/RaceStatsDto.php";
 require_once ROOT_PATH . "model/entity/PlayerEntity.php";
 require_once ROOT_PATH . "model/entity/RaceStatsEntity.php";
+
+
+use Model\Dto\RaceStatsDto;
+use Model\Dto\PlayerDto;
+use Model\Entity\PlayerEntity;
+use Model\Entity\RaceStatsEntity;
+
 
 
 

@@ -1,4 +1,6 @@
 <?php
+namespace Src;
+use PDO;
 
 final class DatabaseConnection{
     private static $instance = null;

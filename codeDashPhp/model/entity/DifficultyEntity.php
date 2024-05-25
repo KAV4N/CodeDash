@@ -1,5 +1,12 @@
 <?php
+
+namespace Model\Entity;
+
+
 require_once ROOT_PATH . "src/Entity.php";
+
+use Src\Entity;
+
 
 
 class DifficultyEntity extends Entity {

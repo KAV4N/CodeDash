@@ -1,6 +1,13 @@
 <?php
+
+namespace Model\Entity;
+
 require_once ROOT_PATH . "src/Entity.php";
 require_once ROOT_PATH . "model/entity/RankEntity.php";
+
+use Src\Entity;
+use Model\Entity\RankEntity;
+
 
 class PlayerEntity extends Entity {
     

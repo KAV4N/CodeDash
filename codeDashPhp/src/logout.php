@@ -1,7 +1,10 @@
 <?php
-//test for log out user
+namespace Src;
+
 session_start();
-$_SESSION = array();
-session_destroy();
-header("Location: ../public/index.php");
-exit();
+if (isset($_SESSION["user_id"])){
+    $_SESSION = [];
+    session_destroy();
+    header("Location: ../public/index.php");
+}
+
