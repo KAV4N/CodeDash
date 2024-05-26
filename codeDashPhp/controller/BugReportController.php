@@ -1,10 +1,10 @@
 <?php
 namespace Controllers;
 
-include ROOT_PATH . 'model/service/BugReportService.php';
-require_once "../src/Controller.php";
-require_once "../src/Template.php";
-require_once "../src/DatabaseConnection.php";
+require_once ROOT_PATH . 'model/service/BugReportService.php';
+require_once ROOT_PATH . "src/Controller.php";
+require_once ROOT_PATH . "src/Template.php";
+require_once ROOT_PATH . "src/DatabaseConnection.php";
 
 use Src\Controller;
 use Model\Service\BugReportService;

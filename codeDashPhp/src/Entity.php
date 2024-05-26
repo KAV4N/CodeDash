@@ -36,6 +36,7 @@ abstract class Entity {
             $this->populateEntityData($result);
             return true;
         } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
             return false;
         }
     }
@@ -56,6 +57,7 @@ abstract class Entity {
             $this->populateEntityData($result);
             return true;
         } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
             return false;
         }
     }
@@ -107,11 +109,10 @@ abstract class Entity {
                 $entity->populateEntityData($result);
                 $entities[] = $entity; 
             }
-
-            return $entities;
         } catch (PDOException $e) {
-            return $entities;
+            echo "Error: " . $e->getMessage();
         }
+        return $entities;
     }
 
     public function getTopEntitiesByColumnValue($fieldName, $value, $orderFieldName, $order = 'ASC', $amount = null) {
@@ -149,10 +150,10 @@ abstract class Entity {
                 $entities[] = $entity; 
             }
 
-            return $entities;
         } catch (PDOException $e) {
-            return $entities;
+            echo "Error: " . $e->getMessage();
         }
+        return $entities;
     }
 
     public function updateData($id, $data) {
@@ -207,11 +208,10 @@ abstract class Entity {
                 $entity->populateEntityData($result);
                 $entities[] = $entity;
             }
-
-            return $entities;
         } catch (PDOException $e) {
-            return $entities;
+            echo "Error: " . $e->getMessage();
         }
+        return $entities;
     }
 
     public function deleteData($id) {
@@ -222,6 +222,7 @@ abstract class Entity {
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
             return false;
         }
     }

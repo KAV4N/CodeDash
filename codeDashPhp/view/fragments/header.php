@@ -5,6 +5,13 @@ function active($current_value){
       echo 'active';
   } 
 }
+
+function isActive($current_value){
+  if(isset($_GET["section"]) && $_GET["section"] == $current_value){
+      return true;
+  } 
+  return false;
+}
 ?>
 
 <header class="navbar navbar-expand-lg sticky-top navbar-default border-gradient only-bottom ">
@@ -44,7 +51,7 @@ function active($current_value){
                     echo '<a class="btn btn-outline-success my-2 my-sm-0 me-2" href="../public/index.php?section=playersDashboard">Players</a>';
                   }
                   echo '<a class="btn btn-outline-light my-2 my-sm-0" href="../public/index.php?section=profile" style="width: 100px;">Profile</a>';
-                } else {
+                } else if (!isActive("auth")) {
                   echo '<a class="btn btn-outline-light my-2 my-sm-0" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" style="width: 100px;">Log In</a>';
                 }
               ?>

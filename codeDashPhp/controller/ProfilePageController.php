@@ -3,9 +3,9 @@
 namespace Controllers;
 
 
-require_once "../src/Controller.php";
-require_once "../src/Template.php";
-require_once "../src/DatabaseConnection.php";
+require_once ROOT_PATH . "src/Controller.php";
+require_once ROOT_PATH . "src/Template.php";
+require_once ROOT_PATH . "src/DatabaseConnection.php";
 require_once ROOT_PATH . 'model/service/PlayerService.php';
 
 use Src\Controller;
@@ -24,7 +24,7 @@ class ProfilePageController extends Controller{
     }
 
     public function runBeforeAction() {
-        if($_SESSION['user_id'] ?? false == true){
+        if(isset($_SESSION['user_id'])){
             return true;
         }
         return false;

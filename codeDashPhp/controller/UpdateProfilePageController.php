@@ -2,9 +2,9 @@
 
 namespace Controllers;
 
-require_once "../src/Controller.php";
-require_once "../src/Template.php";
-require_once "../src/DatabaseConnection.php";
+require_once ROOT_PATH . "src/Controller.php";
+require_once ROOT_PATH . "src/Template.php";
+require_once ROOT_PATH . "src/DatabaseConnection.php";
 
 require_once ROOT_PATH . 'model/service/AccountDataService.php';
 require_once ROOT_PATH . "src/ValidationController.php";
@@ -27,7 +27,7 @@ class UpdateProfilePageController extends Controller {
     }
 
     public function runBeforeAction() {
-        if ($_SESSION['user_id'] ?? false) {
+        if (isset($_SESSION['user_id'])) {
             return true;
         }
         return false;
@@ -80,9 +80,9 @@ class UpdateProfilePageController extends Controller {
 
         $userId = $_SESSION['user_id'];
         if ($this->accountService->deleteAccountData($userId)) {
+            $_SESSION = [];
             session_destroy();
             header("Location: ../public/index.php");
-            exit();
         } else {
             $template->addAttribute("error", "Failed to delete the account. Please try again.");
             $template->view("update-profile");

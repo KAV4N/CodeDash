@@ -3,10 +3,10 @@
 namespace Controllers;
 
 
-require_once "../src/Controller.php";
-require_once "../src/Template.php";
-require_once "../src/DatabaseConnection.php";
-include ROOT_PATH . 'model/service/PlayersDashboardService.php';
+require_once ROOT_PATH . "src/Controller.php";
+require_once ROOT_PATH . "src/Template.php";
+require_once ROOT_PATH . "src/DatabaseConnection.php";
+require_once ROOT_PATH . 'model/service/PlayersDashboardService.php';
 
 use Src\Controller;
 use Model\Service\PlayersDashboardService;

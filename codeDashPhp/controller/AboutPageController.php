@@ -2,8 +2,8 @@
 namespace Controllers;
 
 
-require_once "../src/Controller.php";
-require_once "../src/Template.php";
+require_once ROOT_PATH . "src/Controller.php";
+require_once ROOT_PATH . "src/Template.php";
 
 use Src\Controller;
 use Src\Template;

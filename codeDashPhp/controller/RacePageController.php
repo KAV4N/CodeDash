@@ -2,9 +2,9 @@
 
 namespace Controllers;
 
-require_once "../src/Controller.php";
-require_once "../src/Template.php";
-require_once "../src/DatabaseConnection.php";
+require_once ROOT_PATH . "src/Controller.php";
+require_once ROOT_PATH . "src/Template.php";
+require_once ROOT_PATH . "src/DatabaseConnection.php";
 require_once ROOT_PATH . 'model/service/CodeService.php';
 require_once ROOT_PATH . 'model/mapper/CodeMapper.php';
 

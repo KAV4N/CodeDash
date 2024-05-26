@@ -1,9 +1,9 @@
 <?php
 namespace Controllers;
 
-require_once "../src/Controller.php";
-require_once "../src/Template.php";
-require_once "../src/Auth.php";
+require_once ROOT_PATH . "src/Controller.php";
+require_once ROOT_PATH . "src/Template.php";
+require_once ROOT_PATH . "src/Auth.php";
 
 use Src\Controller;
 use Src\Auth;
@@ -11,19 +11,14 @@ use Src\Template;
 
 class AuthController extends Controller {
     
-/*
     public function runBeforeAction() {
-        if($_SESSION['user_id'] ?? false == true){
-            return true;
+        $canAuth = true;
+        if(isset($_SESSION['user_id'])){
+            $canAuth = false;
         }
-        $action = $_GET['action'] ?? $_POST['action'] ?? 'default';
-        if($action != 'login'){
-            header('Location: ../public/index.php');
-        } else {
-            return true;
-        }
-    }*/
-    
+        return $canAuth;
+    }
+
     public function defaultAction(){
         $template = new Template('default');
         $template->view('auth');
