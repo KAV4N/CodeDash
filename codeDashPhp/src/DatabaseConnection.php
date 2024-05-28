@@ -1,6 +1,7 @@
 <?php
 namespace Src;
 use PDO;
+use PDOException;
 
 final class DatabaseConnection{
     private static $instance = null;
@@ -17,7 +18,12 @@ final class DatabaseConnection{
     }
 
     public static function connect($host, $dbName, $user, $password){
-        self::$connection = new PDO("mysql:dbname=$dbName;host=$host",$user,$password);
+        try {
+            self::$connection = new PDO("mysql:dbname=$dbName;host=$host",$user,$password);
+
+        } catch(PDOException $error) {
+            echo $error->getMessage();
+        } 
     }
 
     public static function getConnection(){
