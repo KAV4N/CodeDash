@@ -13,6 +13,14 @@
   <li><strong>Explore Learning Resources:</strong> Navigate to the Learning section to explore coding tutorials, lessons, and other educational materials.</li>
 </ul>
 
+## Project Photo Preview
+<img src="https://github.com/KAV4N/CodeDash/blob/2350d5b36a8d78ea894c5f37c61d7209caf5104f/img/race.png">
+<img src="https://github.com/KAV4N/CodeDash/blob/2350d5b36a8d78ea894c5f37c61d7209caf5104f/img/home.png">
+<img src="https://github.com/KAV4N/CodeDash/blob/2350d5b36a8d78ea894c5f37c61d7209caf5104f/img/leaderboard.png">
+<img src="https://github.com/KAV4N/CodeDash/blob/2350d5b36a8d78ea894c5f37c61d7209caf5104f/img/about.png">
+
+
+
 <h2>License</h2>
 
 <p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE.md</a> file for details.</p>
